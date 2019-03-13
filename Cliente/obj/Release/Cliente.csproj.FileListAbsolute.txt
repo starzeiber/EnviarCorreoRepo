@@ -1,0 +1,13 @@
+D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\Cliente\bin\Release\Cliente.exe.config
+D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\Cliente\bin\Release\Cliente.exe
+D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\Cliente\bin\Release\Cliente.pdb
+D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\Cliente\bin\Release\EnvioCorreo.dll
+D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\Cliente\bin\Release\EnvioCorreo.pdb
+D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\Cliente\obj\Release\Cliente.csprojAssemblyReference.cache
+D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\Cliente\obj\Release\Cliente.Form1.resources
+D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\Cliente\obj\Release\Cliente.Properties.Resources.resources
+D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\Cliente\obj\Release\Cliente.csproj.GenerateResource.cache
+D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\Cliente\obj\Release\Cliente.csproj.CoreCompileInputs.cache
+D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\Cliente\obj\Release\Cliente.csproj.CopyComplete
+D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\Cliente\obj\Release\Cliente.exe
+D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\Cliente\obj\Release\Cliente.pdb
