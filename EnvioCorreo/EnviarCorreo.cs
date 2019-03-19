@@ -30,11 +30,15 @@ namespace EnvioCorreo
 
             mensajeCorreo.IsBodyHtml = true;
 
-            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(mensajeHtml, null, MediaTypeNames.Text.Html);
-            LinkedResource logo = new LinkedResource(configuracionCorreo.pathLogo);
-            logo.ContentId = "Logo";
-            htmlView.LinkedResources.Add(logo);
-            mensajeCorreo.AlternateViews.Add(htmlView);
+            if (configuracionCorreo.conLogoCabecera)
+            {
+                AlternateView htmlView = AlternateView.CreateAlternateViewFromString(mensajeHtml, null, MediaTypeNames.Text.Html);
+                LinkedResource logo = new LinkedResource(configuracionCorreo.pathLogo);
+                logo.ContentId = "Logo";
+                htmlView.LinkedResources.Add(logo);
+                mensajeCorreo.AlternateViews.Add(htmlView);
+            }
+
             for (int i = 1; i < configuracionCorreo.listaDestinatarios.Count; i++)
             {
                 mensajeCorreo.CC.Add(configuracionCorreo.listaDestinatarios[i]);
@@ -88,13 +92,15 @@ namespace EnvioCorreo
 
             mensajeCorreo.IsBodyHtml = true;
 
-            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(mensajeHtml, null, MediaTypeNames.Text.Html);
-            LinkedResource logo = new LinkedResource(configuracionCorreo.pathLogo)
+            if (configuracionCorreo.conLogoCabecera)
             {
-                ContentId = "Logo"
-            };
-            htmlView.LinkedResources.Add(logo);
-            mensajeCorreo.AlternateViews.Add(htmlView);
+                AlternateView htmlView = AlternateView.CreateAlternateViewFromString(mensajeHtml, null, MediaTypeNames.Text.Html);
+                LinkedResource logo = new LinkedResource(configuracionCorreo.pathLogo);
+                logo.ContentId = "Logo";
+                htmlView.LinkedResources.Add(logo);
+                mensajeCorreo.AlternateViews.Add(htmlView);
+            }
+
             foreach (String cadaElemento in configuracionCorreo.listaDestinatarios)
             {
                 mensajeCorreo.CC.Add(cadaElemento);

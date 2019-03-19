@@ -22,6 +22,10 @@ namespace EnvioCorreo
         /// </summary>
         public Boolean conCertificado = false;
         /// <summary>
+        /// Si llega una imagen de cabecera
+        /// </summary>
+        public Boolean conLogoCabecera = false;
+        /// <summary>
         /// Variable que almacena el puerto de salida del correo electrónico
         /// </summary>
         public int puerto = 587;

@@ -10,3 +10,9 @@ D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\EnvioCorreo\obj\Re
 D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\EnvioCorreo\obj\Release\EnvioCorreo.csproj.CoreCompileInputs.cache
 D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\EnvioCorreo\obj\Release\EnvioCorreo.dll
 D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\EnvioCorreo\obj\Release\EnvioCorreo.pdb
+D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\EnvioCorreo\bin\Release\EnvioCorreo.dll
+D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\EnvioCorreo\bin\Release\EnvioCorreo.pdb
+D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\EnvioCorreo\obj\Release\EnvioCorreo.csprojAssemblyReference.cache
+D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\EnvioCorreo\obj\Release\EnvioCorreo.csproj.CoreCompileInputs.cache
+D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\EnvioCorreo\obj\Release\EnvioCorreo.dll
+D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\EnvioCorreo\obj\Release\EnvioCorreo.pdb

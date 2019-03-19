@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2019-02-26T09:29:11</timestamp>
+        <timestamp>2019-03-14T15:59:16</timestamp>
         <product version="5.36.0.7050" user="Uriel Martínez" serial="238689-391">Dotfuscator Community Edition</product>
     </header>
     <mapping>
@@ -20,6 +20,10 @@
                     <field>
                         <signature>bool</signature>
                         <name>conCertificado</name>
+                    </field>
+                    <field>
+                        <signature>bool</signature>
+                        <name>conLogoCabecera</name>
                     </field>
                     <field>
                         <signature>System.Collections.Generic.List`1&lt;string&gt;</signature>
@@ -121,7 +125,7 @@
         </statisticline>
         <statisticline>
             <description>Total Fields</description>
-            <statistic>11</statistic>
+            <statistic>12</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties</description>

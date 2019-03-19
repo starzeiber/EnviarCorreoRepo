@@ -4,12 +4,12 @@
   <input>
     <loadpaths />
     <asmlist>
-      <inputassembly refid="67c0ae7d-cc3a-4454-8da7-2ccaeb7e353b">
+      <inputassembly refid="4fad3573-52ce-47c8-9c85-a448293e3933">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="D:\TN\Desarrollos\Proyectos\EnvioCorreo\EnviarCorreo v1.0.0.0\EnvioCorreo\bin\Release" name="EnvioCorreo.dll" />
+        <file dir="D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\EnvioCorreo\bin\Release" name="EnvioCorreo.dll" />
       </inputassembly>
     </asmlist>
   </input>
