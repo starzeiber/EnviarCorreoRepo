@@ -1,26 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
 
 namespace EnvioCorreo
 {
+    /// <summary>
+    /// Contiene las funciones para poder enviar un correo
+    /// </summary>
     public class EnviarCorreo
-    {       
-
+    {
         /// <summary>
         /// Función que envía un correo incluyendo una tabla
         /// </summary>
         /// <param name="configuracionCorreo">Parámetros del correo</param>
         /// <param name="titulo">Título del correo</param>        
-        /// <param name="listaElementosTabla">Lista de elementos de la tabla, se considera cada renglón como un elemento donde sus celdas están divididas por pipes (|), 
-        /// para tener formato de título de la tabla, deberá concatenarse la palabra "Titulo". Cuando se quiera que se con color rojo el valor de una celda, 
-        /// deberá concatenarse la palabra "Rojo" al elemento, de lo contrario, el elemento no llevará formato adicional. Ej: campoUnoTitulo|campoDosTitulo|...
+        /// <param name="listaElementosTabla">Se utiliza para enviar un correo en forma de grid, cada elemento del listado se considera como un renglón del grid. 
+        /// el número de celdas será dividas por pipes (|); Ej: celda1|celda2|celda3|.....|
+        /// para tener formato de TITULO en la tabla, deberá concatenarse la palabra "Titulo" al contenido de la misma. Cuando se quiera un color rojo de fuente, 
+        /// deberá concatenarse la palabra "Rojo" al elemento; de lo contrario, el elemento no llevará formato adicional. Ej: campoUnoTitulo|campoDosTitulo|...
         ///  valorCelda1Rojo|valorCelda2|valorCelda3Rojo...</param> 
         /// <returns></returns>
-        public RespuestaCorreo EnvioCorreo(ConfiguracionCorreo configuracionCorreo, String titulo, List<String> listaElementosTabla)
+        public RespuestaCorreo EnvioCorreo(ConfiguracionCorreo configuracionCorreo, string titulo, List<string> listaElementosTabla)
         {
             String mensajeHtml = ObtenerHtml(listaElementosTabla);
 
@@ -54,16 +56,16 @@ namespace EnvioCorreo
             {
                 clienteSmtp.EnableSsl = false;
             }
-            
+
 
             try
             {
                 clienteSmtp.Send(mensajeCorreo);
-                return new RespuestaCorreo() {esExitoso=true };                
+                return new RespuestaCorreo() { esExitoso = true };
             }
             catch (Exception ex)
             {
-                return new RespuestaCorreo() { esExitoso = false, DescripcionError=ex.Message };
+                return new RespuestaCorreo() { esExitoso = false, DescripcionError = ex.Message };
             }
         }
 
@@ -75,7 +77,7 @@ namespace EnvioCorreo
         /// <param name="mensaje">Mensaje en el cuerpo del correo</param>
         /// <param name="esError">Se marca para enviar un correo con formato de error</param>
         /// <returns></returns>
-        public RespuestaCorreo EnvioCorreo(ConfiguracionCorreo configuracionCorreo, String titulo, String mensaje, Boolean esError)
+        public RespuestaCorreo EnvioCorreo(ConfiguracionCorreo configuracionCorreo, string titulo, string mensaje, Boolean esError)
         {
             String mensajeHtml = ObtenerHtml(mensaje);
             MailMessage mensajeCorreo;
@@ -135,7 +137,7 @@ namespace EnvioCorreo
         /// cuando es título, deberá concatenarse la palabra Titulo. Cuando se marque con color rojo, deberá concatenarse la palabra Rojo al elemento, 
         /// de lo contrario el elemento no llevará formato adicional. Ej: campoUnoTitulo|campoDosTitulo|..." </param>            
         /// <returns></returns>        
-        private String ObtenerHtml(List<String> listaElementosTabla)
+        private string ObtenerHtml(List<string> listaElementosTabla)
         {
             try
             {
@@ -179,7 +181,7 @@ namespace EnvioCorreo
                 return constructorHtml.ToString();
             }
             catch (Exception ex)
-            {                
+            {
                 return "Error creando el mensaje de correo" + ex.Message;
             }
         }
@@ -189,7 +191,7 @@ namespace EnvioCorreo
         /// </summary>
         /// <param name="mensaje"></param>
         /// <returns></returns>
-        private String ObtenerHtml(String mensaje)
+        private string ObtenerHtml(string mensaje)
         {
             try
             {
@@ -205,7 +207,7 @@ namespace EnvioCorreo
                 return constructorHtml.ToString();
             }
             catch (Exception ex)
-            {                
+            {
                 return "Error creando el mensaje de correo" + ex.Message;
             }
         }

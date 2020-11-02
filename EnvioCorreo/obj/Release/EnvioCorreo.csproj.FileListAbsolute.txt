@@ -16,3 +16,9 @@ D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\EnvioCorreo\obj\Release\EnvioCorreo
 D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\EnvioCorreo\obj\Release\EnvioCorreo.csproj.CoreCompileInputs.cache
 D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\EnvioCorreo\obj\Release\EnvioCorreo.dll
 D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\EnvioCorreo\obj\Release\EnvioCorreo.pdb
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\bin\Release\EnvioCorreo.xml
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\bin\Release\EnvioCorreo.dll
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\bin\Release\EnvioCorreo.pdb
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\obj\Release\EnvioCorreo.csproj.CoreCompileInputs.cache
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\obj\Release\EnvioCorreo.dll
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\obj\Release\EnvioCorreo.pdb

@@ -24,3 +24,17 @@ D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.
 D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.CopyComplete
 D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\Cliente\obj\Release\Cliente.exe
 D:\TN\Desarrollos\Proyectos\EnviarCorreoRepo\Cliente\obj\Release\Cliente.pdb
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\bin\Release\Cliente.exe.config
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\bin\Release\Cliente.exe
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\bin\Release\Cliente.pdb
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\bin\Release\EnvioCorreo.dll
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\bin\Release\EnvioCorreo.pdb
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\bin\Release\EnvioCorreo.xml
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csprojAssemblyReference.cache
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.Form1.resources
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.Properties.Resources.resources
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.GenerateResource.cache
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.CoreCompileInputs.cache
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.CopyComplete
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.exe
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.pdb
