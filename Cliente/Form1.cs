@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Web;
 
 namespace Cliente
 {
@@ -54,12 +55,13 @@ namespace Cliente
             if (CargarConfiguracionCorreo(configuracionCorreo))
             {
                 EnvioCorreo.EnviarCorreo enviarCorreo = new EnvioCorreo.EnviarCorreo();
-                respuestaCorreo = enviarCorreo.EnvioCorreo(configuracionCorreo, "Archivos de ventas celex", "Proceso se concluyó correctamente", false);
+                respuestaCorreo = enviarCorreo.EnvioCorreo(configuracionCorreo, "es una prueba", "prueba",false);
                 if (respuestaCorreo.esExitoso != true)
                 {
                     MessageBox.Show(respuestaCorreo.DescripcionError);
                 }
             }
         }
+        
     }
 }

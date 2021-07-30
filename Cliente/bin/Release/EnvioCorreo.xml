@@ -87,6 +87,15 @@
             <param name="esError">Se marca para enviar un correo con formato de error</param>
             <returns></returns>
         </member>
+        <member name="M:EnvioCorreo.EnviarCorreo.EnvioCorreo(EnvioCorreo.ConfiguracionCorreo,System.String,System.String)">
+            <summary>
+            Envia un correo electrónico con cuerpo html
+            </summary>
+            <param name="configuracionCorreo">Parámetros del correo</param>
+            <param name="titulo">Título del correo</param>
+            <param name="mensajeHtml">Mensaje como html</param>
+            <returns></returns>
+        </member>
         <member name="M:EnvioCorreo.EnviarCorreo.ObtenerHtml(System.Collections.Generic.List{System.String})">
             <summary>
             Función que entrega el html cuando es una tabla para ser enviado por correo electrónico

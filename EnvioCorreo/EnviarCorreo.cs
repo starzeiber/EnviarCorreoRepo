@@ -131,6 +131,69 @@ namespace EnvioCorreo
         }
 
         /// <summary>
+        /// Envia un correo electrónico con cuerpo html
+        /// </summary>
+        /// <param name="configuracionCorreo">Parámetros del correo</param>
+        /// <param name="titulo">Título del correo</param>
+        /// <param name="mensajeHtml">Mensaje como html</param>
+        /// <returns></returns>
+        public RespuestaCorreo EnvioCorreo(ConfiguracionCorreo configuracionCorreo, string titulo, string mensajeHtml)
+        {
+            //String mensajeHtml = ObtenerHtml(mensaje);
+            MailMessage mensajeCorreo;
+            //if (esError == true)
+            //{
+            //    mensajeCorreo = new MailMessage(configuracionCorreo.remitente, configuracionCorreo.listaDestinatarios[0], titulo + " Error", mensajeHtml);
+            //    mensajeCorreo.Priority = MailPriority.High;
+            //}
+            //else
+            //{
+            //    mensajeCorreo = new MailMessage(configuracionCorreo.remitente, configuracionCorreo.listaDestinatarios[0], titulo, mensajeHtml);
+            //}
+
+            mensajeCorreo = new MailMessage(configuracionCorreo.remitente, configuracionCorreo.listaDestinatarios[0], titulo, mensajeHtml);
+
+            SmtpClient clienteSmtp = new SmtpClient(configuracionCorreo.smtp);
+
+            mensajeCorreo.IsBodyHtml = true;
+
+            if (configuracionCorreo.conLogoCabecera)
+            {
+                AlternateView htmlView = AlternateView.CreateAlternateViewFromString(mensajeHtml, null, MediaTypeNames.Text.Html);
+                LinkedResource logo = new LinkedResource(configuracionCorreo.pathLogo);
+                logo.ContentId = "Logo";
+                htmlView.LinkedResources.Add(logo);
+                mensajeCorreo.AlternateViews.Add(htmlView);
+            }
+
+            foreach (String cadaElemento in configuracionCorreo.listaDestinatarios)
+            {
+                mensajeCorreo.CC.Add(cadaElemento);
+            }
+
+            clienteSmtp.Credentials = new System.Net.NetworkCredential(configuracionCorreo.usuario, configuracionCorreo.pass);
+            clienteSmtp.Port = configuracionCorreo.puerto;
+            if (configuracionCorreo.conCertificado)
+            {
+                clienteSmtp.EnableSsl = true;
+            }
+            else
+            {
+                clienteSmtp.EnableSsl = false;
+            }
+
+            try
+            {
+                clienteSmtp.Send(mensajeCorreo);
+                return new RespuestaCorreo();
+            }
+            catch (Exception ex)
+            {
+                return new RespuestaCorreo() { esExitoso = false, DescripcionError = ex.Message };
+            }
+        }
+
+        /// <summary>
         /// Función que entrega el html cuando es una tabla para ser enviado por correo electrónico
         /// </summary>
         /// <param name="listaElementosTabla">Lista de elementos de la tabla, se considera cada renglón como un elemento dividido por pipes (|) sus celdas, 

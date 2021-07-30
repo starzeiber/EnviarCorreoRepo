@@ -24,3 +24,8 @@ C:\Users\starc\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.cspro
 C:\Users\starc\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.csproj.CopyComplete
 C:\Users\starc\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.exe
 C:\Users\starc\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.pdb
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.csprojAssemblyReference.cache
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.Form1.resources
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.Properties.Resources.resources
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.csproj.GenerateResource.cache
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.csproj.CoreCompileInputs.cache
