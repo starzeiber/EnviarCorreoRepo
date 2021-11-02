@@ -1,32 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Web;
 
 namespace Cliente
 {
     public partial class Form1 : Form
     {
-        public Boolean CargarConfiguracionCorreo(EnvioCorreo.ConfiguracionCorreo configuracionCorreo)
+        public Boolean CargarConfiguracionCorreo(MailOperation.MailConfig configuracionCorreo)
         {
             try
             {
-                configuracionCorreo.usuario = ConfigurationManager.AppSettings["usuario"];
+                configuracionCorreo.user = ConfigurationManager.AppSettings["usuario"];
                 configuracionCorreo.smtp = ConfigurationManager.AppSettings["smtp"];
                 configuracionCorreo.pass = ConfigurationManager.AppSettings["pass"];
-                configuracionCorreo.puerto = int.Parse(ConfigurationManager.AppSettings["puerto"]);
-                configuracionCorreo.remitente = configuracionCorreo.usuario;
-                configuracionCorreo.conCertificado = true;
+                configuracionCorreo.port = int.Parse(ConfigurationManager.AppSettings["puerto"]);
+                configuracionCorreo.sender = configuracionCorreo.user;
+                configuracionCorreo.withCertificateSSL = true;
                 int numeroDestinatarios = int.Parse(ConfigurationManager.AppSettings["numeroDestinatarios"]);
                 for (int i = 1; i <= numeroDestinatarios; i++)
                 {
-                    configuracionCorreo.listaDestinatarios.Add(ConfigurationManager.AppSettings["destinatario" + i.ToString()]);
+                    configuracionCorreo.listRecipient.Add(ConfigurationManager.AppSettings["destinatario" + i.ToString()]);
                 }
                 int numeroDestinatariosError = int.Parse(ConfigurationManager.AppSettings["numeroDestinatariosError"]);
                 for (int i = 1; i <= numeroDestinatariosError; i++)
@@ -50,18 +43,18 @@ namespace Cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
-            EnvioCorreo.ConfiguracionCorreo configuracionCorreo = new EnvioCorreo.ConfiguracionCorreo();
-            EnvioCorreo.RespuestaCorreo respuestaCorreo;
+            MailOperation.MailConfig configuracionCorreo = new MailOperation.MailConfig();
+            MailOperation.MailResponse respuestaCorreo;
             if (CargarConfiguracionCorreo(configuracionCorreo))
             {
-                EnvioCorreo.EnviarCorreo enviarCorreo = new EnvioCorreo.EnviarCorreo();
-                respuestaCorreo = enviarCorreo.EnvioCorreo(configuracionCorreo, "es una prueba", "prueba",false);
-                if (respuestaCorreo.esExitoso != true)
+                MailOperation.Mail enviarCorreo = new MailOperation.EnviarCorreo();
+                respuestaCorreo = enviarCorreo.EnvioCorreo(configuracionCorreo, "es una prueba", "prueba", false);
+                if (respuestaCorreo.success != true)
                 {
-                    MessageBox.Show(respuestaCorreo.DescripcionError);
+                    MessageBox.Show(respuestaCorreo.errorDescription);
                 }
             }
         }
-        
+
     }
 }

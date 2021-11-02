@@ -85,9 +85,9 @@
     <Content Include="Plantillas\index.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EnvioCorreo\EnvioCorreo.csproj">
+    <ProjectReference Include="..\EnvioCorreo\SendReceiveMail.csproj">
       <Project>{7f4de0a0-91aa-4cb2-99bf-c4370c2d910b}</Project>
-      <Name>EnvioCorreo</Name>
+      <Name>SendReceiveMail</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

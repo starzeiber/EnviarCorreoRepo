@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace EnvioCorreo
+namespace MailOperation
 {
     /// <summary>
     /// Clase que contiene las propiedades de la respuesta al envío de un correo
     /// </summary>
-    public class RespuestaCorreo
+    public class MailResponse
     {
         /// <summary>
         /// Variable que indica si el proceso fue exitoso
         /// </summary>
-        public Boolean esExitoso = true;
+        public bool success = true;
         /// <summary>
         /// Si existe un error, en esta variable se describe
         /// </summary>
-        public String DescripcionError = String.Empty;
+        public string errorDescription = string.Empty;
     }
 }

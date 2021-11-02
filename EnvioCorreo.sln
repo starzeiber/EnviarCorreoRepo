@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvioCorreo", "EnvioCorreo\EnvioCorreo.csproj", "{7F4DE0A0-91AA-4CB2-99BF-C4370C2D910B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendReceiveMail", "EnvioCorreo\SendReceiveMail.csproj", "{7F4DE0A0-91AA-4CB2-99BF-C4370C2D910B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cliente", "Cliente\Cliente.csproj", "{82604777-177C-4875-BDEB-311D8742D028}"
 EndProject

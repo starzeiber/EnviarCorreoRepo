@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("EnvioCorreo")]
+[assembly: AssemblyTitle("SendMail")]
 [assembly: AssemblyDescription("Componente que envia correo")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("UMB")]
-[assembly: AssemblyProduct("EnvioCorreo")]
+[assembly: AssemblyProduct("SendMail")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("UMB")]
 [assembly: AssemblyCulture("")]
@@ -35,7 +34,7 @@ using System.Runtime.InteropServices;
 
 //Siglas    Autor       Fecha       Versión     Descripción
 //@         UMB         24/01/2019  1.0.0.0     Se crea el componente
+//@         UMB         02/10/2021  2.0.0.0     Se actualiza todo el proyecto y se refactoriza
 
-
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]

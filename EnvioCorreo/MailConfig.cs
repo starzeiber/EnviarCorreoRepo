@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace EnvioCorreo
+namespace MailOperation
 {
     /// <summary>
     /// Contiene todas las propiedades necesarias para poder enviar un correo
     /// </summary>
-    public class ConfiguracionCorreo
+    public class MailConfig
     {
         /// <summary>
         /// Variable que almacena el usuario del correo electrónico
         /// </summary>        
-        public string usuario { set; get; } = string.Empty;
+        public string user { set; get; } = string.Empty;
         /// <summary>
         /// Variable que almacena el smtp del correo electrónico
         /// </summary>
@@ -23,31 +22,36 @@ namespace EnvioCorreo
         /// <summary>
         /// Variable que indica si el SMTP necesita certificado de seguridad
         /// </summary>
-        public bool conCertificado { set; get; } = false;
-        /// <summary>
-        /// Si llega una imagen de cabecera
-        /// </summary>
-        public bool conLogoCabecera { set; get; } = false;
-        /// <summary>
-        /// Ubicación de la imagen que irá en la cabecera del correo
-        /// </summary>
-        public string pathLogo { set; get; } = string.Empty;
+        public bool withCertificateSSL { set; get; } = false;        
         /// <summary>
         /// Variable que almacena el puerto de salida del correo electrónico, por defecto es el 587
         /// </summary>
-        public int puerto { set; get; } = 587;
+        public int port { set; get; } = 587;
         /// <summary>
         /// Variable que almacena el destinatario de correo electrónico
         /// </summary>
-        public List<string> listaDestinatarios { set; get; } = new List<string>();
-        /// <summary>
-        /// Variable que almacena el destinatario de correo electrónico en caso de error
-        /// </summary>        
-        public List<string> listaDestinatariosError { set; get; } = new List<string>();
+        public List<string> listRecipient { set; get; }        
         /// <summary>
         /// Variable que almacena la dirección de correo del remitente
         /// </summary>
-        public string remitente { set; get; } = string.Empty;
-        
+        public string sender { set; get; } = string.Empty;
+        public bool withHighPriority { get; set; }
+        public bool withAttachment { get; set; }
+        public string pathAttachment { get; set; }
+
+        public MailConfig()
+        {
+            user = "";
+            smtp = "";
+            pass = "";
+            withCertificateSSL = false;
+            withHighPriority = false;
+            port = 0;
+            listRecipient = new List<string>();
+            sender = "";
+            withAttachment = false;
+            pathAttachment = "";
+        }
+
     }
 }
