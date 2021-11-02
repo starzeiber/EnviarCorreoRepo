@@ -22,21 +22,30 @@ namespace MailOperation
         /// <summary>
         /// Variable que indica si el SMTP necesita certificado de seguridad
         /// </summary>
-        public bool withCertificateSSL { set; get; } = false;        
+        public bool withCertificateSSL { set; get; } = false;
         /// <summary>
         /// Variable que almacena el puerto de salida del correo electrónico, por defecto es el 587
         /// </summary>
         public int port { set; get; } = 587;
         /// <summary>
-        /// Variable que almacena el destinatario de correo electrónico
-        /// </summary>
-        public List<string> listRecipient { set; get; }        
-        /// <summary>
         /// Variable que almacena la dirección de correo del remitente
         /// </summary>
         public string sender { set; get; } = string.Empty;
+        /// <summary>
+        /// Variable que almacena el destinatario de correo electrónico
+        /// </summary>
+        public List<string> listRecipient { set; get; }
+        /// <summary>
+        /// Con prioridad alta
+        /// </summary>
         public bool withHighPriority { get; set; }
+        /// <summary>
+        /// indica que llevará un adjunto
+        /// </summary>
         public bool withAttachment { get; set; }
+        /// <summary>
+        /// Ruta del archivo adjunto
+        /// </summary>
         public string pathAttachment { get; set; }
 
         public MailConfig()

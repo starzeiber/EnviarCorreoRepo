@@ -35,6 +35,8 @@ using System.Runtime.InteropServices;
 //Siglas    Autor       Fecha       Versión     Descripción
 //@         UMB         24/01/2019  1.0.0.0     Se crea el componente
 //@         UMB         02/10/2021  2.0.0.0     Se actualiza todo el proyecto y se refactoriza
+//@         UMB         02/10/2021  2.1.0.0     Cambio de nombre y subida a nuget
 
-[assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
+
+[assembly: AssemblyVersion("2.1.0.0")]
+[assembly: AssemblyFileVersion("2.1.0.0")]

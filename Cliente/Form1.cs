@@ -1,32 +1,55 @@
 ﻿using System;
 using System.Configuration;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Cliente
 {
     public partial class Form1 : Form
     {
-        public Boolean CargarConfiguracionCorreo(MailOperation.MailConfig configuracionCorreo)
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MailOperation.MailConfig mailConfig = new MailOperation.MailConfig();
+            MailOperation.MailResponse mailResponse;
+            if (LoadConfiguration(mailConfig))
+            {
+                MailOperation.Mail mail = new MailOperation.Mail(mailConfig);
+
+                mailResponse = mail.SendMail("es una prueba", "prueba");
+                if (mailResponse.success != true)
+                {
+                    MessageBox.Show(mailResponse.errorDescription);
+                }
+                else
+                {
+                    MessageBox.Show("correo enviado");
+                }
+            }
+        }
+
+        private bool LoadConfiguration(MailOperation.MailConfig mailConfig)
         {
             try
             {
-                configuracionCorreo.user = ConfigurationManager.AppSettings["usuario"];
-                configuracionCorreo.smtp = ConfigurationManager.AppSettings["smtp"];
-                configuracionCorreo.pass = ConfigurationManager.AppSettings["pass"];
-                configuracionCorreo.port = int.Parse(ConfigurationManager.AppSettings["puerto"]);
-                configuracionCorreo.sender = configuracionCorreo.user;
-                configuracionCorreo.withCertificateSSL = true;
+                mailConfig.user = ConfigurationManager.AppSettings["usuario"];
+                mailConfig.smtp = ConfigurationManager.AppSettings["smtp"];
+                mailConfig.pass = ConfigurationManager.AppSettings["pass"];
+                mailConfig.withCertificateSSL = true;
+                mailConfig.port = int.Parse(ConfigurationManager.AppSettings["puerto"]);
+                mailConfig.sender = mailConfig.user;
                 int numeroDestinatarios = int.Parse(ConfigurationManager.AppSettings["numeroDestinatarios"]);
                 for (int i = 1; i <= numeroDestinatarios; i++)
                 {
-                    configuracionCorreo.listRecipient.Add(ConfigurationManager.AppSettings["destinatario" + i.ToString()]);
+                    mailConfig.listRecipient.Add(ConfigurationManager.AppSettings["destinatario" + i.ToString()]);
                 }
-                int numeroDestinatariosError = int.Parse(ConfigurationManager.AppSettings["numeroDestinatariosError"]);
-                for (int i = 1; i <= numeroDestinatariosError; i++)
-                {
-                    configuracionCorreo.listaDestinatariosError.Add(ConfigurationManager.AppSettings["destinatarioError" + i.ToString()]);
-                }
-                configuracionCorreo.pathLogo = ConfigurationManager.AppSettings["cabecera"];
+                mailConfig.withHighPriority = true;
+                mailConfig.withAttachment = true;
+                mailConfig.pathAttachment = "C:/prueba.pdf";
                 return true;
             }
             catch (Exception)
@@ -35,26 +58,23 @@ namespace Cliente
             }
         }
 
-
-        public Form1()
+        private static string ObtenerHtmlCorreo()
         {
-            InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MailOperation.MailConfig configuracionCorreo = new MailOperation.MailConfig();
-            MailOperation.MailResponse respuestaCorreo;
-            if (CargarConfiguracionCorreo(configuracionCorreo))
+            string fileName;
+            string path;
+            string cadena;
+            try
             {
-                MailOperation.Mail enviarCorreo = new MailOperation.EnviarCorreo();
-                respuestaCorreo = enviarCorreo.EnvioCorreo(configuracionCorreo, "es una prueba", "prueba", false);
-                if (respuestaCorreo.success != true)
-                {
-                    MessageBox.Show(respuestaCorreo.errorDescription);
-                }
+                fileName = "index.html";
+                path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plantillas", fileName);
+                cadena = File.ReadAllText(path);
+                return cadena;
             }
-        }
+            catch (Exception ex)
+            {
+                return string.Empty;
+            }
 
+        }
     }
 }

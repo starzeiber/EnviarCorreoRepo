@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Net.Mime;
-using System.Text;
 
 namespace MailOperation
 {
@@ -13,7 +11,14 @@ namespace MailOperation
     /// </summary>
     public class Mail
     {
+        private const int timeOut = 30000;
+
         private readonly MailConfig mailConfig;
+
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
+        /// <param name="mailConfig">Configuración del correo</param>
         public Mail(MailConfig mailConfig)
         {
             this.mailConfig = mailConfig;
@@ -23,41 +28,25 @@ namespace MailOperation
             }
         }
 
-        public string GetHtmlBasic(string mensaje)
-        {
-            try
-            {
-                StringBuilder constructorHtml = new StringBuilder();
-                constructorHtml.Append("<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>");
-                constructorHtml.Append("<html xmlns='http://www.w3.org/1999/xhtml' >");
-                constructorHtml.Append("<head><title>Untitled Page</title>");
-                constructorHtml.Append("<style type='text / css'> .bajo {  color: #FFFFFF;  text-align: center;  border-bottom: 1px solid #0000FF; background-color: #FF0000;   } .alto {  color: #0000FF; text-align: center;  border-bottom: 1px solid #0000FF;} table {  border: 1px solid red;  } img{display:block;margin:auto;}  .titulo { background-color: #0000FF; color: #FFFFFF; text-align: center;  border-bottom: 1px solid #0000FF; font-weight: bold}  </style>");
-                constructorHtml.Append("</ head > ");
-                constructorHtml.Append("<body><img class='centrado' src=\"cid:Logo\">");
-                constructorHtml.Append(mensaje);
-                constructorHtml.Append("</body></html>");
-                return constructorHtml.ToString();
-            }
-            catch (Exception ex)
-            {
-                return "Error creando el mensaje de correo" + ex.Message;
-            }
-        }
-
+        /// <summary>
+        /// Envia un correo por un cliente smtp
+        /// </summary>
+        /// <param name="title">titulo del correo</param>
+        /// <param name="html">html que será utilizado en el cuerpo del correo</param>
+        /// <returns></returns>
         public MailResponse SendMail(string title, string html)
         {
             MailResponse mailResponse = new MailResponse();
-            string mensajeHtml = GetHtmlBasic(html);
-            MailMessage mailMessage = new MailMessage(mailConfig.sender, mailConfig.listRecipient.First(), title, mensajeHtml);
+            
+            MailMessage mailMessage = new MailMessage(mailConfig.sender, mailConfig.listRecipient.First(), title, html);
 
-            SmtpClient clienteSmtp = new SmtpClient(mailConfig.smtp);
             if (mailConfig.withHighPriority)
                 mailMessage.Priority = MailPriority.High;
             mailMessage.IsBodyHtml = true;
-            
+
             try
             {
-                AlternateView htmlView = AlternateView.CreateAlternateViewFromString(mensajeHtml, null, MediaTypeNames.Text.Html);
+                AlternateView htmlView = AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html);
                 mailMessage.AlternateViews.Add(htmlView);
 
                 if (mailConfig.withAttachment)
@@ -85,7 +74,7 @@ namespace MailOperation
                     }
                 }
 
-                if (mailConfig.listRecipient.Count>1)
+                if (mailConfig.listRecipient.Count > 1)
                 {
                     mailConfig.listRecipient.RemoveAt(0);
                     foreach (string item in mailConfig.listRecipient)
@@ -94,19 +83,20 @@ namespace MailOperation
                     }
                 }
 
-                clienteSmtp.Credentials = new System.Net.NetworkCredential(mailConfig.user, mailConfig.pass);
-                clienteSmtp.Port = mailConfig.port;
-                if (mailConfig.withCertificateSSL)
-                {
-                    clienteSmtp.EnableSsl = true;
-                }
-                else
-                {
-                    clienteSmtp.EnableSsl = false;
-                }
+                SmtpClient smtpClient = new SmtpClient(mailConfig.smtp);
+                smtpClient.Timeout = timeOut;
+                smtpClient.Credentials = new System.Net.NetworkCredential(mailConfig.user, mailConfig.pass);
+                smtpClient.Port = mailConfig.port;
+                smtpClient.EnableSsl = mailConfig.withCertificateSSL;
 
-                clienteSmtp.Send(mailMessage);
+                smtpClient.Send(mailMessage);
                 mailResponse.success = true;
+                return mailResponse;
+            }
+            catch (SmtpException smtpException)
+            {
+                mailResponse.success = false;
+                mailResponse.errorDescription = smtpException.Message;
                 return mailResponse;
             }
             catch (Exception ex)
@@ -116,7 +106,7 @@ namespace MailOperation
                 return mailResponse;
             }
         }
-        
+
         private bool CheckParameters()
         {
             if (mailConfig.user == "" || mailConfig.smtp == "" || mailConfig.pass == "" || mailConfig.port == 0 || mailConfig.listRecipient.Count == 0 || mailConfig.sender == "")

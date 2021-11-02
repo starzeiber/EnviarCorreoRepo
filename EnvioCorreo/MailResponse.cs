@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MailOperation
+﻿namespace MailOperation
 {
     /// <summary>
     /// Clase que contiene las propiedades de la respuesta al envío de un correo

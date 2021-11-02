@@ -1,0 +1,5 @@
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\obj\Debug\SendReceiveMail.csproj.CoreCompileInputs.cache
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\bin\Debug\SendMail.dll
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\bin\Debug\SendMail.pdb
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\obj\Debug\SendMail.dll
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\obj\Debug\SendMail.pdb
