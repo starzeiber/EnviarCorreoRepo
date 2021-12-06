@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("SendMail")]
-[assembly: AssemblyDescription("Componente que envia correo")]
+[assembly: AssemblyDescription("Componente que envia un correo electronico con un cuerpo en html")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("UMB")]
 [assembly: AssemblyProduct("SendMail")]
@@ -36,7 +36,8 @@ using System.Runtime.InteropServices;
 //@         UMB         24/01/2019  1.0.0.0     Se crea el componente
 //@         UMB         02/10/2021  2.0.0.0     Se actualiza todo el proyecto y se refactoriza
 //@         UMB         02/10/2021  2.1.0.0     Cambio de nombre y subida a nuget
-
-
-[assembly: AssemblyVersion("2.1.0.0")]
-[assembly: AssemblyFileVersion("2.1.0.0")]
+//@         UMB         06/12/2021  2.2.0.0     Cambio de framework a 4.5
+//@         UMB         06/12/2021  2.2.1.0     Se agregan grupos de dependencia en nuget
+//@         UMB         06/12/2021  2.2.2.0     Cambio de framework a 4.5
+[assembly: AssemblyVersion("2.2.2.0")]
+[assembly: AssemblyFileVersion("2.2.2.0")]

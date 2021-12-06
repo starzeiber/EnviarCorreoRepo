@@ -28,7 +28,7 @@ C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\bin\Release\Cliente.exe
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\bin\Release\Cliente.exe
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\bin\Release\Cliente.pdb
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\bin\Release\SendMailUmb.dll
-C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.AssemblyReference.cache
+C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.SuggestedBindingRedirects.cache
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.Form1.resources
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.Properties.Resources.resources
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.GenerateResource.cache
