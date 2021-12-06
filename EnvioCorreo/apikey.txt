@@ -1,4 +1,5 @@
 oy2mdapv3mqooxkvwm6qz256c7aoz5iehawqfj5u4hjvoa
+cmd:
+nuget pack
 
-
-nuget push SendMailUmb.2.0.0.nupkg oy2mdapv3mqooxkvwm6qz256c7aoz5iehawqfj5u4hjvoa -Source https://api.nuget.org/v3/index.json
+nuget push SendMailUmb.2.2.2.nupkg oy2mdapv3mqooxkvwm6qz256c7aoz5iehawqfj5u4hjvoa -Source https://api.nuget.org/v3/index.json
