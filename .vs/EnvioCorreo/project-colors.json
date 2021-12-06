@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7f4de0a0-91aa-4cb2-99bf-c4370c2d910b": {
+      "ProjectGuid": "7f4de0a0-91aa-4cb2-99bf-c4370c2d910b",
+      "DisplayName": "SendMail",
+      "ColorIndex": 0
+    },
+    "82604777-177c-4875-bdeb-311d8742d028": {
+      "ProjectGuid": "82604777-177c-4875-bdeb-311d8742d028",
+      "DisplayName": "Cliente",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
