@@ -9,12 +9,6 @@
     <license type="expression">MIT</license>
     <description>$description$</description>
     <releaseNotes>Envia un correo con cuerpo html y un archivo adjunto</releaseNotes>
-    <copyright>$copyright$</copyright>
-	<dependencies>
-      <group targetFramework=".NETFramework4.5" />
-	  <group targetFramework=".NETFramework4.6" />
-	  <group targetFramework=".NETFramework4.7" />
-	  <group targetFramework=".NETFramework4.8" />
-    </dependencies>
+    <copyright>$copyright$</copyright>	
   </metadata>
 </package>

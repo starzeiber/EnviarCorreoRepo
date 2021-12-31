@@ -39,5 +39,9 @@ using System.Runtime.InteropServices;
 //@         UMB         06/12/2021  2.2.0.0     Cambio de framework a 4.5
 //@         UMB         06/12/2021  2.2.1.0     Se agregan grupos de dependencia en nuget
 //@         UMB         06/12/2021  2.2.2.0     Cambio de framework a 4.5
-[assembly: AssemblyVersion("2.2.2.0")]
-[assembly: AssemblyFileVersion("2.2.2.0")]
+//@         UMB         06/12/2021  2.3.0.0     Cambio de framework a 4.5 en nuget
+
+
+
+[assembly: AssemblyVersion("2.3.0.0")]
+[assembly: AssemblyFileVersion("2.3.0.0")]
