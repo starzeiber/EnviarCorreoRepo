@@ -10,6 +10,11 @@
       "ProjectGuid": "82604777-177c-4875-bdeb-311d8742d028",
       "DisplayName": "Cliente",
       "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
     }
   },
   "NextColorIndex": 2

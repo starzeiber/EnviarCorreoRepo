@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MailOperation
+namespace UMB.MailOperation
 {
     /// <summary>
     /// Contiene todas las propiedades necesarias para poder enviar un correo

@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SendMailUmb</name>
+    </assembly>
+    <members>
+        <member name="T:UMB.MailOperation.MailConfig">
+            <summary>
+            Contiene todas las propiedades necesarias para poder enviar un correo
+            </summary>
+        </member>
+        <member name="P:UMB.MailOperation.MailConfig.user">
+            <summary>
+            Variable que almacena el usuario del correo electrónico
+            </summary>        
+        </member>
+        <member name="P:UMB.MailOperation.MailConfig.smtp">
+            <summary>
+            Variable que almacena el smtp del correo electrónico
+            </summary>
+        </member>
+        <member name="P:UMB.MailOperation.MailConfig.pass">
+            <summary>
+            Variable que almacena el password del correo electrónico
+            </summary>
+        </member>
+        <member name="P:UMB.MailOperation.MailConfig.withCertificateSSL">
+            <summary>
+            Variable que indica si el SMTP necesita certificado de seguridad
+            </summary>
+        </member>
+        <member name="P:UMB.MailOperation.MailConfig.port">
+            <summary>
+            Variable que almacena el puerto de salida del correo electrónico, por defecto es el 587
+            </summary>
+        </member>
+        <member name="P:UMB.MailOperation.MailConfig.sender">
+            <summary>
+            Variable que almacena la dirección de correo del remitente
+            </summary>
+        </member>
+        <member name="P:UMB.MailOperation.MailConfig.listRecipient">
+            <summary>
+            Variable que almacena el destinatario de correo electrónico
+            </summary>
+        </member>
+        <member name="P:UMB.MailOperation.MailConfig.withHighPriority">
+            <summary>
+            Con prioridad alta
+            </summary>
+        </member>
+        <member name="P:UMB.MailOperation.MailConfig.withAttachment">
+            <summary>
+            indica que llevará un adjunto
+            </summary>
+        </member>
+        <member name="P:UMB.MailOperation.MailConfig.pathAttachment">
+            <summary>
+            Ruta del archivo adjunto
+            </summary>
+        </member>
+        <member name="T:UMB.MailOperation.Mail">
+            <summary>
+            Contiene las funciones para poder enviar un correo
+            </summary>
+        </member>
+        <member name="M:UMB.MailOperation.Mail.#ctor(UMB.MailOperation.MailConfig)">
+            <summary>
+            Constructor de la clase
+            </summary>
+            <param name="mailConfig">Configuración del correo</param>
+        </member>
+        <member name="M:UMB.MailOperation.Mail.SendMail(System.String,System.String)">
+            <summary>
+            Envia un correo por un cliente smtp
+            </summary>
+            <param name="title">titulo del correo</param>
+            <param name="html">html que será utilizado en el cuerpo del correo</param>
+            <returns></returns>
+        </member>
+        <member name="T:UMB.MailOperation.MailResponse">
+            <summary>
+            Clase que contiene las propiedades de la respuesta al envío de un correo
+            </summary>
+        </member>
+        <member name="F:UMB.MailOperation.MailResponse.success">
+            <summary>
+            Variable que indica si el proceso fue exitoso
+            </summary>
+        </member>
+        <member name="F:UMB.MailOperation.MailResponse.errorDescription">
+            <summary>
+            Si existe un error, en esta variable se describe
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -4,3 +4,10 @@ C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\obj\Debug\SendMail.
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\obj\Debug\SendMailUmb.dll
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\obj\Debug\SendMailUmb.pdb
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\EnvioCorreo\obj\Debug\SendMail.csproj.AssemblyReference.cache
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Debug\sendmail.ico
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Debug\UMB.SendMail.dll
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Debug\UMB.SendMail.pdb
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\obj\Debug\SendMail.csproj.AssemblyReference.cache
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\obj\Debug\SendMail.csproj.CoreCompileInputs.cache
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\obj\Debug\UMB.SendMail.dll
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\obj\Debug\UMB.SendMail.pdb

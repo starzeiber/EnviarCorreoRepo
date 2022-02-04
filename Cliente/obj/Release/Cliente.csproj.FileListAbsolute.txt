@@ -36,3 +36,16 @@ C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csp
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.CopyComplete
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.exe
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Release\Cliente.pdb
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\bin\Release\Cliente.exe.config
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\bin\Release\Cliente.exe
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\bin\Release\Cliente.pdb
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\bin\Release\SendMailUmb.dll
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.AssemblyReference.cache
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.SuggestedBindingRedirects.cache
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Release\Cliente.Form1.resources
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Release\Cliente.Properties.Resources.resources
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.GenerateResource.cache
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.CoreCompileInputs.cache
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Release\Cliente.csproj.CopyComplete
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Release\Cliente.exe
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Release\Cliente.pdb

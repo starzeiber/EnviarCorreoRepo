@@ -1,4 +1,4 @@
-﻿namespace MailOperation
+﻿namespace UMB.MailOperation
 {
     /// <summary>
     /// Clase que contiene las propiedades de la respuesta al envío de un correo

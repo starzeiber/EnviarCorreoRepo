@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Net.Mime;
 
-namespace MailOperation
+namespace UMB.MailOperation
 {
     /// <summary>
     /// Contiene las funciones para poder enviar un correo
@@ -37,7 +37,7 @@ namespace MailOperation
         public MailResponse SendMail(string title, string html)
         {
             MailResponse mailResponse = new MailResponse();
-            
+
             MailMessage mailMessage = new MailMessage(mailConfig.sender, mailConfig.listRecipient.First(), title, html);
 
             if (mailConfig.withHighPriority)

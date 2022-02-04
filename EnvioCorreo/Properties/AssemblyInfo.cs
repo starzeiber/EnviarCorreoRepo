@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("SendMail")]
-[assembly: AssemblyDescription("Componente que envia un correo electronico con un cuerpo en html")]
+[assembly: AssemblyTitle("UMB.SendMail")]
+[assembly: AssemblyDescription("Componente que envia un correo electronico con un cuerpo en html, con parametros de certificado ssl")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("UMB")]
-[assembly: AssemblyProduct("SendMail")]
+[assembly: AssemblyProduct("UMB.SendMail")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("UMB")]
 [assembly: AssemblyCulture("")]
@@ -39,5 +39,8 @@ using System.Runtime.InteropServices;
 //@         UMB         06/12/2021  2.2.0.0     Cambio de framework a 4.5
 //@         UMB         06/12/2021  2.2.1.0     Se agregan grupos de dependencia en nuget
 //@         UMB         06/12/2021  2.2.2.0     Cambio de framework a 4.5
-[assembly: AssemblyVersion("2.2.2.0")]
-[assembly: AssemblyFileVersion("2.2.2.0")]
+//@         UMB         03/02/2021  3.0.0.0     Creación de un nuevo paquete nuget
+//@         UMB         03/02/2021  3.0.2.0     Setting nuget
+
+[assembly: AssemblyVersion("3.0.2.0")]
+[assembly: AssemblyFileVersion("3.0.2.0")]

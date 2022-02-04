@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package -->
+<html class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus js-focus-visible theme-light" lang="es-es" dir="ltr" data-css-variable-support="true" data-authenticated="false" data-auth-status-determined="true" data-target="docs" x-ms-format-detection="none" data-js-focus-visible=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="Creación de un paquete NuGet con la CLI de nuget.exe">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package">
+			<meta property="og:description" content="Guía detallada sobre el diseño y la creación de un paquete NuGet, incluidos los archivos y el control de versiones.">
+		<meta property="og:image" content="https://docs.microsoft.com/en-us/media/logos/logo-ms-social.png">
+		<meta property="og:image:alt" content="Microsoft Logo">
+
+	<meta name="twitter:card" content="summary">
+
+	<meta name="twitter:site" content="@docsmsft">
+
+	<meta name="color-scheme" content="light dark">
+
+
+	<meta name="schema" content="Conceptual">
+<meta name="author" content="JonDouglas">
+<meta name="breadcrumb_path" content="../_breadcrumb/toc.json">
+<meta name="depot_name" content="MSDN.Nuget_concept">
+<meta name="description" content="Guía detallada sobre el diseño y la creación de un paquete NuGet, incluidos los archivos y el control de versiones.">
+<meta name="document_id" content="f35f4267-e5e3-ddcf-d3e4-479fb233ce9f">
+<meta name="document_version_independent_id" content="6d49d66f-f777-7e44-3a45-723e3ad09a59">
+<meta name="gitcommit" content="https://github.com/NuGet/docs.microsoft.com-nuget/blob/446a7fa824801a69a49a6e259f6244dfc1f1dc03/docs/create-packages/Creating-a-Package.md">
+<meta name="locale" content="es-es">
+<meta name="ms.author" content="feaguila">
+<meta name="ms.date" content="07/09/2019">
+<meta name="ms.prod" content="nuget">
+<meta name="ms.reviewer" content="anangaur">
+<meta name="ms.reviewer" content="jodou">
+<meta name="ms.reviewer" content="chgill">
+<meta name="ms.reviewer" content="jiacjian">
+<meta name="ms.topic" content="conceptual">
+<meta name="ms.workload" content="dotnet">
+<meta name="ms.workload" content="dotnetcore">
+<meta name="ms.workload" content="aspnet">
+<meta name="original_content_git_url" content="https://github.com/NuGet/docs.microsoft.com-nuget/blob/live/docs/create-packages/Creating-a-Package.md">
+<meta name="ROBOTS" content="INDEX,FOLLOW">
+<meta name="site_name" content="Docs">
+<meta name="updated_at" content="2021-12-21 09:21 AM">
+<meta name="ms.translationtype" content="HT">
+<meta name="ms.contentlocale" content="es-es">
+<meta name="loc_version" content="2021-12-01T09:00:21.4241239Z">
+<meta name="loc_source_id" content="Github-65048221#live">
+<meta name="loc_file_id" content="Github-65048221.live.MSDN.Nuget_concept.create-packages/Creating-a-Package.md">
+<meta name="page_type" content="conceptual">
+<meta name="toc_rel" content="../toc.json">
+<meta name="word_count" content="4185">
+
+
+	<meta name="scope" content="NuGet">
+<link href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package" rel="canonical">
+	<title>Creación de un paquete NuGet con la CLI de nuget.exe | Microsoft Docs</title>
+
+		<link rel="stylesheet" href="./Creación de un paquete NuGet con la CLI de nuget.exe _ Microsoft Docs_files/72dadfc.site-ltr.css">
+
+	
+
+	<script id="msdocs-script">
+	var msDocs = {
+		data: {
+			timeOrigin: Date.now(),
+			contentLocale: 'es-es',
+			contentDir: 'ltr',
+			userLocale: 'es-es',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {
+
+			},
+			hasBinaryRating: true,
+			hasGithubIssues: false,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'None',
+			feedbackGitHubRepo: '',
+			feedbackProductUrl: '',
+			contentGitUrl: 'https://github.com/NuGet/docs.microsoft.com-nuget/blob/main/docs/create-packages/Creating-a-Package.md',
+			extendBreadcrumb: false,
+			isEditDisplayable: false,
+			hideViewSource: false,
+			hasPageActions: true,
+			hasBookmark: true,
+			hasShare: true,
+			hasRecommendations: true,
+		},
+		functions:{}
+	};
+	</script>
+	<script src="./Creación de un paquete NuGet con la CLI de nuget.exe _ Microsoft Docs_files/wcp-consent.js.descarga"></script>
+	<script src="./Creación de un paquete NuGet con la CLI de nuget.exe _ Microsoft Docs_files/ms.jsll-3.min.js.descarga"></script>
+
+	<script src="./Creación de un paquete NuGet con la CLI de nuget.exe _ Microsoft Docs_files/5cce29c0.deprecation.js.descarga"></script>
+		<script src="./Creación de un paquete NuGet con la CLI de nuget.exe _ Microsoft Docs_files/84655228.index-docs.js.descarga"></script><style></style>
+</head>
+
+<body lang="es-es" dir="ltr">
+	<div class="header-holder has-default-focus">
+		<a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#main" class="skip-to-main-link has-outline-color-text visually-hidden-until-focused position-fixed has-inner-focus focus-visible top-0 left-0 right-0 padding-xs has-text-centered has-body-background" tabindex="1">Ir al contenido principal</a>
+
+		<div hidden="" id="cookie-consent-holder"></div>
+
+		<div id="unsupported-browser" style="
+			background-color: white;
+			color: black;
+			padding: 16px;
+			border-bottom: 1px solid grey;" hidden="">
+			<div style="max-width: 800px; margin: 0 auto;">
+				<p style="font-size: 24px">Este explorador ya no se admite.</p>
+				<p style="font-size: 16px; margin-top: 16px;">Actualice a Microsoft&nbsp;Edge para aprovechar las características y actualizaciones de seguridad más recientes, y disponer de soporte técnico.</p>
+				<div style="margin-top: 12px;">
+					<a href="https://go.microsoft.com/fwlink/p/?LinkID=2092881" style="
+						background-color: #0078d4;
+						border: 1px solid #0078d4;
+						color: white;
+						padding: 6px 12px;
+						border-radius: 2px;
+						display: inline-block;
+						">
+Descargar Microsoft&nbsp;Edge					</a>
+					<a href="https://docs.microsoft.com/en-US/lifecycle/faq/internet-explorer-microsoft-edge" style="
+							background-color: white;
+							padding: 6px 12px;
+							border: 1px solid #505050;
+							color: #171717;
+							border-radius: 2px;
+							display: inline-block;
+							">
+Más información					</a>
+				</div>
+			</div>
+
+		</div>
+		<!-- liquid-tag banners global -->
+		<div id="headerAreaHolder" data-bi-name="header">
+<header role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization"><!----> <div class="nav-bar"><!---->  <div class="nav-bar-brand">
+		<a class="nav-bar-button" itemprop="url" href="https://www.microsoft.com/" aria-label="Microsoft">
+			 <div class="nav-bar-logo" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope">
+		<svg xmlns="http://www.w3.org/2000/svg" width="108" height="23" viewBox="72 72 337 74" preserveAspectRatio="xMidYMin slice">
+			<g data-name="MS-symbol">
+				<clippath>
+					<path transform="matrix(1 0 0 -1 0 216)" d="M0 216h482V0H0z"></path>
+				</clippath>
+				<g clip-path="url(#a)">
+					<path class="fill-current-color color-text-subtle" d="M394.942 104.59h-10.858v25.003h-7.38V104.59h-5.182v-5.965h5.182v-4.308c0-3.254 1.06-5.92 3.178-7.998 2.12-2.079 4.835-3.118 8.15-3.118.882 0 1.666.045 2.35.135a9.37 9.37 0 011.806.407v6.296c-.24-.14-.663-.31-1.265-.512-.603-.2-1.296-.3-2.078-.3-1.528 0-2.702.476-3.526 1.43-.824.954-1.235 2.365-1.235 4.232v3.736h10.858v-6.959l7.321-2.229v9.188h7.381v5.965h-7.38v14.49c0 1.91.345 3.254 1.038 4.037.693.783 1.782 1.175 3.27 1.175.42 0 .927-.1 1.52-.3a7.178 7.178 0 001.552-.724v6.025c-.463.261-1.23.502-2.305.723a15.742 15.742 0 01-3.178.331c-3.073 0-5.378-.817-6.914-2.455-1.537-1.637-2.305-4.102-2.305-7.396zm-48.407 9.73c0 3.233.733 5.703 2.2 7.411 1.465 1.707 3.564 2.56 6.295 2.56 2.652 0 4.67-.853 6.055-2.56 1.386-1.708 2.08-4.238 2.08-7.592 0-3.334-.719-5.849-2.155-7.547-1.436-1.697-3.45-2.545-6.04-2.545-2.67 0-4.745.888-6.22 2.666-1.477 1.777-2.215 4.313-2.215 7.607m-7.592.24c0-5.12 1.446-9.177 4.338-12.17 2.892-2.993 6.91-4.489 12.05-4.489 4.841 0 8.621 1.441 11.343 4.323 2.721 2.883 4.082 6.774 4.082 11.674 0 5.021-1.447 9.018-4.338 11.99-2.892 2.973-6.829 4.458-11.81 4.458-4.8 0-8.61-1.41-11.432-4.232-2.822-2.82-4.233-6.673-4.233-11.554m-16.417-7.802c0 1.045.331 1.863.994 2.456.662.592 2.128 1.34 4.398 2.243 2.912 1.166 4.956 2.476 6.131 3.932 1.175 1.456 1.762 3.22 1.762 5.287 0 2.912-1.12 5.252-3.359 7.02-2.24 1.767-5.267 2.65-9.083 2.65-1.285 0-2.706-.155-4.263-.467-1.556-.31-2.877-.707-3.96-1.19v-7.169a17.945 17.945 0 004.277 2.198c1.526.543 2.911.814 4.157.814 1.647 0 2.862-.23 3.645-.693.784-.46 1.175-1.235 1.175-2.319 0-1.005-.406-1.853-1.22-2.546-.813-.693-2.355-1.492-4.624-2.395-2.69-1.125-4.599-2.39-5.724-3.796-1.125-1.406-1.687-3.193-1.687-5.362 0-2.792 1.11-5.086 3.33-6.884 2.217-1.797 5.095-2.696 8.63-2.696 1.084 0 2.3.12 3.645.361 1.346.242 2.47.553 3.374.934v6.93c-.964-.644-2.089-1.195-3.374-1.658-1.286-.462-2.56-.693-3.826-.693-1.386 0-2.465.271-3.238.813-.774.543-1.16 1.286-1.16 2.23m-35.066 7.562c0 3.233.733 5.703 2.2 7.411 1.465 1.707 3.564 2.56 6.295 2.56 2.652 0 4.67-.853 6.055-2.56 1.386-1.708 2.08-4.238 2.08-7.592 0-3.334-.719-5.849-2.155-7.547-1.436-1.697-3.449-2.545-6.039-2.545-2.672 0-4.745.888-6.222 2.666-1.476 1.777-2.214 4.313-2.214 7.607m-7.592.24c0-5.12 1.446-9.177 4.338-12.17 2.893-2.993 6.91-4.489 12.051-4.489 4.84 0 8.621 1.441 11.342 4.323 2.721 2.883 4.082 6.774 4.082 11.674 0 5.021-1.446 9.018-4.338 11.99-2.892 2.973-6.828 4.458-11.809 4.458-4.8 0-8.61-1.41-11.433-4.232-2.822-2.82-4.233-6.673-4.233-11.554m-3.136-16.448c.582 0 1.105.041 1.567.121.462.08.853.18 1.175.301v7.38c-.382-.28-.939-.546-1.672-.798-.733-.25-1.622-.376-2.666-.376-1.788 0-3.299.753-4.534 2.26-1.235 1.505-1.853 3.825-1.853 6.958v15.635h-7.29V98.624h7.29v4.88h.12c.663-1.687 1.667-3.007 3.013-3.96 1.346-.954 2.962-1.432 4.85-1.432m-27.956 26.18c1.084 0 2.28-.25 3.585-.754a15.06 15.06 0 003.615-1.988v6.778c-1.165.663-2.485 1.165-3.962 1.506-1.475.342-3.098.512-4.865.512-4.559 0-8.265-1.44-11.116-4.323-2.852-2.88-4.278-6.562-4.278-11.04 0-4.98 1.456-9.083 4.37-12.307 2.91-3.224 7.037-4.835 12.38-4.835 1.366 0 2.746.176 4.143.527 1.395.352 2.504.758 3.328 1.22v6.99c-1.125-.824-2.274-1.462-3.45-1.914a9.966 9.966 0 00-3.599-.678c-2.872 0-5.192.934-6.959 2.802-1.768 1.868-2.652 4.388-2.652 7.562 0 3.132.85 5.573 2.546 7.32 1.697 1.748 4.002 2.621 6.914 2.621m-22.112 5.302h-7.29V98.624h7.29zm-8.044-39.916c0-1.205.437-2.214 1.311-3.028.874-.813 1.913-1.22 3.118-1.22 1.285 0 2.35.417 3.193 1.25.844.834 1.266 1.833 1.266 2.998 0 1.185-.432 2.18-1.296 2.982-.864.804-1.918 1.205-3.163 1.205-1.246 0-2.295-.406-3.148-1.219-.854-.815-1.28-1.803-1.28-2.968m-6.274-3.284v43.2h-7.5v-33.86h-.12l-13.408 33.86h-4.97l-13.738-33.86h-.09v33.86h-6.929v-43.2h10.755l12.412 32.024h.18l13.105-32.024z"></path>
+					<path d="M106.214 106.214H71.996V71.996h34.218z" fill="#f25022"></path>
+					<path d="M143.993 106.214h-34.218V71.996h34.218z" fill="#7fba00"></path>
+					<path d="M106.214 143.993H71.996v-34.218h34.218z" fill="#00a4ef"></path>
+					<path d="M143.993 143.993h-34.218v-34.218h34.218z" fill="#ffb900"></path>
+				</g>
+			</g>
+		</svg>
+	</div>
+		</a>
+	</div> 
+				
+		<div class="nav-bar-item is-hidden-tablet">
+			<div class="nav-bar-menu">
+				<button class="nav-bar-button is-title" title="Navegación global" aria-expanded="false">
+					<span class="nav-bar-menu-title"><!---->Documentación<!----></span>
+					<div class="nav-bar-burger">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span class="nav-bar-burger-label"><!---->Navegación global<!----></span>
+					</div>
+				</button>
+			</div>
+		</div>
+	
+				
+		<nav class="nav-bar-nav" role="navigation" aria-label="Global">
+			<ul class="nav-bar-nav-list">
+				
+		<li class="nav-bar-item is-category">
+			<a class="nav-bar-button is-title has-hover-underline" itemprop="url" href="https://docs.microsoft.com/es-es/">
+				<span><!---->Docs<!----></span>
+			</a>
+		</li>
+	
+				<!----> <li class="nav-bar-item">
+				<a class=" nav-bar-button has-hover-underline is-active" href="https://docs.microsoft.com/es-es/documentation">
+					<span><!---->Documentación<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class=" nav-bar-button has-hover-underline " href="https://docs.microsoft.com/es-es/learn/">
+					<span><!---->Learn<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class=" nav-bar-button has-hover-underline " href="https://docs.microsoft.com/es-es/answers/products/">
+					<span><!---->Q&amp;A<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class=" nav-bar-button has-hover-underline " href="https://docs.microsoft.com/es-es/samples/browse/">
+					<span><!---->Ejemplos de código<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class=" nav-bar-button has-hover-underline " href="https://docs.microsoft.com/es-es/shows/">
+					<span><!---->programa<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class=" nav-bar-button has-hover-underline " href="https://docs.microsoft.com/es-es/events/">
+					<span><!---->Eventos<!----></span>
+				</a>
+		  </li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-40">
+			<span><!---->Más<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-40" aria-label="Más">
+			<!---->
+				<li class="nav-bar-item" hidden="">
+					<a class=" nav-bar-button is-active" href="https://docs.microsoft.com/es-es/documentation"><!---->Documentación<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class=" nav-bar-button " href="https://docs.microsoft.com/es-es/learn/"><!---->Learn<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class=" nav-bar-button " href="https://docs.microsoft.com/es-es/answers/products/"><!---->Q&amp;A<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class=" nav-bar-button " href="https://docs.microsoft.com/es-es/samples/browse/"><!---->Ejemplos de código<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class=" nav-bar-button " href="https://docs.microsoft.com/es-es/shows/"><!---->programa<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class=" nav-bar-button " href="https://docs.microsoft.com/es-es/events/"><!---->Eventos<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!---->
+			</ul>
+		</nav>
+	
+				<span class="nav-bar-spacer"></span>
+				
+		<div class="nav-bar-search " id="ax-41" hidden="">
+			
+		<form class="nav-bar-search-form" method="GET" name="nav-bar-search-form" role="search" id="nav-bar-search-form" aria-label="Buscar" aria-expanded="false" action="https://docs.microsoft.com/es-es/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!----> <div class="control ">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="site-search-input" class="autocomplete-input input   is-small" type="search" name="terms" aria-expanded="false" aria-owns="ax-42-listbox" aria-activedescendant="" aria-label="Buscar" placeholder="Buscar">
+
+				<span aria-hidden="true" class="icon is-small is-left" hidden="">
+					<span class="has-text-primary docon docon-undefined"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-42-listbox" aria-label="site-search-input-suggestions" hidden="">
+				
+				
+			</ul><!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="">
+			<input name="scope" hidden="" value="NuGet">
+			
+			
+		</form>
+	
+		</div>
+		
+					<div class="nav-bar-search">
+						<!-- hidden when the width drops to tablet -->
+						
+		<form class="nav-bar-search-form" method="GET" name="nav-bar-search-form" role="search" id="nav-bar-search-form-desktop" aria-label="Buscar" aria-expanded="false" action="https://docs.microsoft.com/es-es/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!----> <div class="control has-icons-left">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-43" class="autocomplete-input input control has-icons-left  is-small" type="search" name="terms" aria-expanded="false" aria-owns="ax-44-listbox" aria-activedescendant="" aria-label="Buscar" placeholder="Buscar">
+
+				<span aria-hidden="true" class="icon is-small is-left">
+					<span class="has-text-primary docon docon-search"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-44-listbox" aria-label="ax-43-suggestions" hidden="">
+				
+				
+			</ul><!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="">
+			<input name="scope" hidden="" value="NuGet">
+			
+			
+		</form>
+	
+					</div>
+			  
+		<div class="nav-bar-search " hidden="">
+			<div class="nav-bar-search-form-expander">
+				<button id="form-expander" class="nav-bar-button has-hover-underline " title="Buscar" aria-expanded="false" aria-controls="ax-41">
+					
+		<span class="is-visually-hidden-mobile"><!---->Buscar<!----></span>
+		<span class="icon margin-left-xxs" aria-hidden="true">
+			<span class="docon docon-search"></span>
+		</span>
+	
+				</button>
+			</div>
+		</div>
+	
+				
+		<div class="nav-bar-profile">
+			
+		<a class="docs-sign-in auth-status-determined not-authenticated" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#"> Iniciar sesión </a>
+	 
+		<div class="dropdown has-caret auth-status-determined authenticated">
+			<button class="dropdown-trigger button-reset" aria-controls="user-menu" aria-expanded="false" aria-label="Su cuenta">
+				<figure class="image is-36x36">
+					<img class="has-body-background-medium is-rounded" alt="" data-profile-property="avatarUrl">
+				</figure>
+			</button>
+			<div class="dropdown-menu box justify-content-flex-start has-body-background" id="user-menu" role="menu">
+				<div class="media is-user-dir">
+					<div class="media-left">
+						<figure class="image is-48x48" aria-hidden="true">
+							<img class="has-body-background-medium is-rounded" aria-labelledby="displayName" data-profile-property="avatarUrl">
+						</figure>
+					</div>
+					<div class="media-content">
+						<h2 class="title font-size-lg">
+							<span id="displayName" class="is-inline-truncated has-max-width-200" data-profile-property="displayName"></span>
+						</h2>
+						<p class="subtitle font-size-sm margin-bottom-none">
+							<span class="is-inline-truncated has-max-width-200" data-profile-property="upn"></span>
+						</p>
+					</div>
+				</div>
+				<ul class="padding-top-xs padding-bottom-xs">
+					<li class="padding-bottom-xs">
+						<a data-profile-property="profileUrl" href="https://docs.microsoft.com/es-es/users/me/activity/"><!---->Perfil<!----></a>
+					</li>
+					<li>
+						<a data-profile-property="settingsUrl" href="https://docs.microsoft.com/es-es/users/me/settings/"><!---->Configuración<!----></a>
+					</li>
+				</ul>
+				<div class="border-top padding-top-xs">
+					<a class="docs-sign-out" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#"><!---->Cerrar sesión<!----></a>
+				</div>
+			</div>
+		</div>
+	
+		</div>
+	
+			 <!----></div>  <!----></header>		</div>
+
+						<div id="content-header" class="content-header uhf-container has-padding has-default-focus border-bottom-none" data-bi-name="content-header">
+					<nav id="breadcrumbs-deprecated-container" class="breadcrumb-holder has-padding-none has-padding-left-medium-tablet has-padding-right-medium-tablet has-padding-left-none-uhf-tablet has-padding-left-none-uhf-tablet has-padding-none-desktop flex-grow-1" data-bi-name="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Ruta de navegación">
+						<ul id="page-breadcrumbs-deprecated" class="breadcrumbs-deprecated"><!----><!---->
+			<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+				
+							<a itemprop="item" href="https://docs.microsoft.com/es-es/">
+								<span itemprop="name"><!---->Docs<!----></span>
+							</a>
+					  
+				<meta itemprop="position" content="1">
+			</li>
+		<!---->
+			<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+				
+							<a itemprop="item" href="https://docs.microsoft.com/es-es/nuget">
+								<span itemprop="name"><!---->NuGet<!----></span>
+							</a>
+					  
+				<meta itemprop="position" content="2">
+			</li>
+		<!---->
+			<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+				
+							<a itemprop="item" href="https://docs.microsoft.com/es-es/nuget/create-packages/overview-and-workflow">
+								<span itemprop="name"><!---->Crear paquetes<!----></span>
+							</a>
+					  
+				<meta itemprop="position" content="3">
+			</li>
+		<!----><!----></ul>
+					</nav>
+					<div class="content-header-controls">
+						<button type="button" class="contents-button button" data-bi-name="contents-expand" aria-haspopup="true" data-contents-button="">
+							<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+							<span class="contents-expand-title">Contenido</span>
+						</button>
+						<button type="button" class="ap-collapse-behavior ap-expanded button" data-bi-name="ap-collapse" aria-controls="action-panel">
+							<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+							<span>Salir del modo de enfoque</span>
+						</button>
+					</div>
+					<div id="page-actions-deprecated-container" class="has-padding-none-tablet padding-xs font-size-sm display-flex justify-content-space-between flex-grow-1 page-action-holder">
+						<ul class="is-hidden-mobile action-list justify-content-flex-start justify-content-flex-end-tablet display-flex flex-wrap-wrap flex-grow-1 is-unstyled">
+							<li>
+								<a id="lang-link-deprecated" class="button button button-clear button-sm" title="Leer en inglés" data-bi-name="language-toggle" data-read-in-link="" data-hidden-parent="" href="https://docs.microsoft.com/en-us/nuget/create-packages/creating-a-package" data-bi="{&quot;cN&quot;:&quot;language-toggle&quot;,&quot;value&quot;:&quot;off&quot;}">
+									<span class="icon docon docon-locale-globe" aria-hidden="true" data-read-in-link-icon=""></span>
+									<span class="is-visually-hidden-touch is-hidden-portrait" data-read-in-link-text="">Leer en inglés</span>
+								</a>
+							</li>
+							<li>
+								<button type="button" class="collection button button-clear button-sm has-inner-focus" data-list-type="collection" data-bi-name="collection" title="Agregar Creación de un paquete NuGet con la CLI de nuget.exe | Microsoft Docs a una colección" aria-pressed="false">
+									<span class="icon" aria-hidden="true">
+										<span class="docon docon-circle-addition has-text-primary"></span>
+									</span>
+									<span class="collection-status is-visually-hidden-touch is-hidden-portrait">Guardar</span>
+								</button>
+							</li>
+							<li>
+<div class="sharing dropdown has-caret">
+	<button class="dropdown-trigger button button-clear button-sm button-block justify-content-flex-start has-inner-focus" aria-controls="sharing-menu" aria-expanded="false" title="Compartir este documento" data-bi-name="share">
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-sharing"></span>
+		</span>
+		<span class="is-visually-hidden-touch is-hidden-portrait">Compartir</span>
+	</button>
+	<div class="dropdown-menu has-padding-small" id="sharing-menu">
+		<ul data-bi-name="share-links">
+			<li>
+				<a class="button button-clear button-sm button-block justify-content-flex-start has-inner-focus share-twitter" data-bi-name="twitter" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdocs.microsoft.com%2Fes-es%2Fnuget%2Fcreate-packages%2Fcreating-a-package%3FWT.mc_id%3Dtwitter&amp;text=Creaci%C3%B3n%20de%20un%20paquete%20NuGet%20con%20la%20CLI%20de%20nuget.exe%20%7C%20Microsoft%20Docs&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fes-es%2Fnuget%2Fcreate-packages%2Fcreating-a-package%3FWT.mc_id%3Dtwitter">
+					<span class="icon">
+						<span class="docon docon-brand-twitter has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Twitter</span>
+				</a>
+			</li>
+			<li>
+				<a class="button button-clear button-sm button-block justify-content-flex-start has-inner-focus share-linkedin" data-bi-name="linkedin" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fdocs.microsoft.com%2Fes-es%2Fnuget%2Fcreate-packages%2Fcreating-a-package%3FWT.mc_id%3Dlinkedin">
+					<span class="icon">
+						<span class="docon docon-brand-linkedin has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>LinkedIn</span>
+				</a>
+			</li>
+			<li>
+				<a class="button button-clear button-sm button-block justify-content-flex-start has-inner-focus share-facebook" data-bi-name="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.microsoft.com%2Fes-es%2Fnuget%2Fcreate-packages%2Fcreating-a-package%3FWT.mc_id%3Dfacebook">
+					<span class="icon">
+						<span class="docon docon-brand-facebook has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Facebook</span>
+				</a>
+			</li>
+			<li>
+				<a class="button button-clear button-sm button-block justify-content-flex-start has-inner-focus share-email" data-bi-name="email" href="mailto:?subject=%5BArt%C3%ADculo%20compartido%5D%20Creaci%C3%B3n%20de%20un%20paquete%20NuGet%20con%20la%20CLI%20de%20nuget.exe%20%7C%20Microsoft%20Docs&amp;body=Creaci%C3%B3n%20de%20un%20paquete%20NuGet%20con%20la%20CLI%20de%20nuget.exe%20%7C%20Microsoft%20Docs%0A%0Ahttps%3A%2F%2Fdocs.microsoft.com%2Fes-es%2Fnuget%2Fcreate-packages%2Fcreating-a-package%3FWT.mc_id%3Demail">
+					<span class="icon">
+						<span class="docon docon-mail-message-fill has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Correo electrónico</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>							</li>
+						</ul>
+						<button id="page-actions-toc-button-deprecated" type="button" class="border contents-button button button-clear button-sm is-hidden-tablet has-inner-focus" aria-label="Contenido" data-bi-name="contents-expand" data-contents-button="">
+							<span class="icon">
+								<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+							</span>
+							<span class="contents-expand-title">Tabla de contenido</span>
+						</button>
+						<div class="is-invisible"></div>
+						<div class="is-hidden-tablet level-item is-flexible level-right">
+							<button type="button" class="page-actions-button  button button-clear button-sm is-hidden-tablet has-inner-focus border is-full-height  margin-left-xxs" aria-label="Acciones de página" data-bi-name="pageactions">
+								<span class="icon">
+									<span class="docon docon-more-vertical" aria-hidden="true"></span>
+								</span>
+							</button>
+						</div>
+					</div>
+			</div>
+
+
+		<div id="disclaimer-holder" class="has-overflow-hidden has-default-focus">
+			<!-- liquid-tag banners sectional -->
+		</div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-top-padding has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile ">
+
+			<div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="position-fixed display-flex flex-direction-column" role="navigation" aria-label="Principal" data-bi-name="left toc" style="width: 335.8px; top: 24px; bottom: 24px;"><form action="javascript:" role="search" aria-label="Buscar" class="has-margin-bottom-small"><label class="visually-hidden" for="ax-45">Buscar</label><div class="autocomplete display-block" data-bi-name="autocomplete"><!----> <div class="control has-icons-left">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-45" class="autocomplete-input input control has-icons-left is-full-width is-small" type="text" aria-expanded="false" aria-owns="ax-46-listbox" aria-activedescendant="" placeholder="Filtrar por título">
+
+				<span aria-hidden="true" class="icon is-small is-left">
+					<span class="has-text-primary docon docon-filter-settings"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-46-listbox" aria-label="ax-45-suggestions" hidden="">
+				
+				
+			</ul><!----></div></form><ul class="tree is-vertically-scrollable flex-grow-1 flex-shrink-1" role="tree" aria-label="Tabla de contenido" data-bi-name="tree" data-is-collapsible="true"><li role="none"><a aria-setsize="10" aria-level="1" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://docs.microsoft.com/es-es/nuget/what-is-nuget">¿Qué es NuGet?</a></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="2" role="treeitem" tabindex="-1" id="title-2-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Primeros pasos</span></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="3" role="treeitem" tabindex="-1" id="title-3-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Consumir paquetes</span></li><li class="tree-item is-expanded" aria-setsize="10" aria-level="1" aria-posinset="4" role="treeitem" tabindex="-1" id="title-4-1" aria-expanded="true"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Crear paquetes</span><ul class="tree-group" role="group"><li role="none"><a aria-setsize="11" aria-level="2" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://docs.microsoft.com/es-es/nuget/create-packages/overview-and-workflow">Información general y flujo de trabajo</a></li><li role="none"><a aria-setsize="11" aria-level="2" aria-posinset="2" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package-dotnet-cli">Creación de un paquete (CLI de dotnet)</a></li><li role="none"><a aria-setsize="11" aria-level="2" aria-posinset="3" role="treeitem" tabindex="0" class="tree-item is-leaf has-external-link-indicator is-selected" data-bi-name="tree-leaf" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package" aria-current="page">Creación de un paquete (CLI de nuget.<wbr>exe)</a></li><li role="none"><a aria-setsize="11" aria-level="2" aria-posinset="4" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package-msbuild">Creación de un paquete (MSBuild)</a></li><li role="none"><a aria-setsize="11" aria-level="2" aria-posinset="5" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://docs.microsoft.com/es-es/nuget/create-packages/package-authoring-best-practices">Procedimientos recomendados para la creación de paquetes</a></li><li role="none"><a aria-setsize="11" aria-level="2" aria-posinset="6" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://docs.microsoft.com/es-es/nuget/create-packages/prerelease-packages">Compilación de un paquete de versión preliminar</a></li><li role="none"><a aria-setsize="11" aria-level="2" aria-posinset="7" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://docs.microsoft.com/es-es/nuget/create-packages/symbol-packages-snupkg">Creación de un paquete de símbolos</a></li><li role="none"><a aria-setsize="11" aria-level="2" aria-posinset="8" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://docs.microsoft.com/es-es/nuget/create-packages/multiple-target-frameworks-project-file">Compatibilidad con varios marcos de destino en el archivo del proyecto</a></li><li class="tree-item" aria-setsize="11" aria-level="2" aria-posinset="9" role="treeitem" tabindex="-1" id="title-4-1_9-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Tareas avanzadas</span></li><li class="tree-item" aria-setsize="11" aria-level="2" aria-posinset="10" role="treeitem" tabindex="-1" id="title-4-1_10-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Guías de contenido específico</span></li><li class="tree-item" aria-setsize="11" aria-level="2" aria-posinset="11" role="treeitem" tabindex="-1" id="title-4-1_11-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Firma de paquetes</span></li></ul></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="5" role="treeitem" tabindex="-1" id="title-5-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Publicar paquetes</span></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="6" role="treeitem" tabindex="-1" id="title-6-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Conceptos</span></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="7" role="treeitem" tabindex="-1" id="title-7-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Referencia</span></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="8" role="treeitem" tabindex="-1" id="title-8-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Extensibilidad</span></li><li class="tree-item" aria-setsize="10" aria-level="1" aria-posinset="9" role="treeitem" tabindex="-1" id="title-9-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Recursos</span></li><li role="none"><a aria-setsize="10" aria-level="1" aria-posinset="10" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://docs.microsoft.com/es-es/nuget/nuget-org/overview-nuget-org">NuGet.<wbr>org</a></li></ul></nav>
+			</div>
+
+			<!-- .primary-holder -->
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<!--div.columns -->
+				<div class="columns is-gapless-mobile has-large-gaps ">
+
+
+					<div id="main-column" class="column  is-full is-8-desktop">
+
+						<main id="main" role="main" data-bi-name="content" lang="es-es" dir="ltr">
+							<!-- article-header -->
+							<div id="article-header" class="background-color-body margin-top-xs-tablet margin-bottom-xs" aria-label="content-header" hidden="">
+								<div class="display-flex align-items-center ">
+									<details id="article-header-breadcrumbs-overflow-popover" class="popover" data-for="article-header-breadcrumbs" hidden="">
+										<summary class="button button-clear button-primary button-sm">
+											<span class="icon">
+												<span class="docon docon-more"></span>
+											</span>
+										</summary>
+										<div id="article-header-breadcrumbs-overflow" class="popover-content padding-none">
+
+										</div>
+									</details>
+									<bread-crumbs id="article-header-breadcrumbs" class="overflow-hidden flex-grow-1 margin-right-sm margin-right-md-tablet margin-right-lg-desktop" style="display: block; white-space: nowrap; overflow: hidden;"></bread-crumbs>
+
+									<div id="article-header-page-actions" class="opacity-none margin-left-auto display-flex flex-wrap-no-wrap align-items-stretch">
+
+										<a id="lang-link-tablet" class="button button-primary button-clear button-sm display-none display-inline-flex-tablet" title="Leer en inglés" data-bi-name="language-toggle" data-read-in-link="" href="https://docs.microsoft.com/en-us/nuget/create-packages/creating-a-package" data-bi="{&quot;cN&quot;:&quot;language-toggle&quot;,&quot;value&quot;:&quot;off&quot;}">
+											<span class="icon margin-none" aria-hidden="true" data-read-in-link-icon="">
+												<span class="docon docon-locale-globe"></span>
+											</span>
+											<span class="is-visually-hidden" data-read-in-link-text="">Leer en inglés</span>
+										</a>
+
+											<button type="button" class="collection button button-clear button-sm button-primary display-none display-inline-flex-tablet" data-list-type="collection" data-bi-name="collection" title="Agregar Creación de un paquete NuGet con la CLI de nuget.exe | Microsoft Docs a una colección" aria-pressed="false">
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-circle-addition"></span>
+												</span>
+												<span class="collection-status is-visually-hidden">Guardar</span>
+											</button>
+										
+
+										
+
+										
+
+										
+
+
+										
+										<details class="popover popover-right" id="article-header-page-actions-overflow">
+											<summary class="justify-content-flex-start button button-clear button-sm button-primary" aria-label="Más acciones">
+												<span class="icon" aria-hidden="true">
+													<span class="docon docon-more-vertical"></span>
+												</span>
+											</summary>
+											<div class="popover-content padding-none">
+													<button data-page-action-item="overflow-mobile" type="button" class="justify-content-flex-start button-block button-sm has-inner-focus button button-clear display-none-tablet" aria-label="Contenido" data-bi-name="contents-expand" data-contents-button="" data-popover-close="">
+														<span class="icon">
+															<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+														</span>
+														<span class="contents-expand-title">Tabla de contenido</span>
+													</button>
+
+												<a id="lang-link-overflow" class="justify-content-flex-start button-sm has-inner-focus button button-clear button-block display-none-tablet" title="Leer en inglés" data-bi-name="language-toggle" data-page-action-item="overflow-mobile" data-check-hidden="true" data-read-in-link="" href="https://docs.microsoft.com/en-us/nuget/create-packages/creating-a-package" data-bi="{&quot;cN&quot;:&quot;language-toggle&quot;,&quot;value&quot;:&quot;off&quot;}">
+													<span class="icon" aria-hidden="true" data-read-in-link-icon="">
+														<span class="docon docon-locale-globe"></span>
+													</span>
+													<span data-read-in-link-text="">Leer en inglés</span>
+												</a>
+
+													<button type="button" class="collection justify-content-flex-start button button-clear button-sm has-inner-focus button-block display-none-tablet" data-list-type="collection" data-bi-name="collection" title="Agregar Creación de un paquete NuGet con la CLI de nuget.exe | Microsoft Docs a una colección" data-page-action-item="overflow-mobile" data-check-hidden="true" data-popover-close="" aria-pressed="false">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-circle-addition"></span>
+														</span>
+														<span class="collection-status">Guardar</span>
+													</button>
+
+
+
+
+													<div aria-hidden="true" class="margin-none display-none-tablet border-top" data-page-action-item="overflow-all"></div>
+
+													
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-twitter" data-bi-name="twitter" data-page-action-item="overflow-all" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdocs.microsoft.com%2Fes-es%2Fnuget%2Fcreate-packages%2Fcreating-a-package%3FWT.mc_id%3Dtwitter&amp;text=Creaci%C3%B3n%20de%20un%20paquete%20NuGet%20con%20la%20CLI%20de%20nuget.exe%20%7C%20Microsoft%20Docs&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fes-es%2Fnuget%2Fcreate-packages%2Fcreating-a-package%3FWT.mc_id%3Dtwitter">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-brand-twitter"></span>
+															</span>
+															<span>Twitter</span>
+														</a>
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-linkedin" data-bi-name="linkedin" data-page-action-item="overflow-all" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fdocs.microsoft.com%2Fes-es%2Fnuget%2Fcreate-packages%2Fcreating-a-package%3FWT.mc_id%3Dlinkedin">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-brand-linkedin"></span>
+															</span>
+															<span>LinkedIn</span>
+														</a>
+														<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start share-facebook" data-bi-name="facebook" data-page-action-item="overflow-all" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.microsoft.com%2Fes-es%2Fnuget%2Fcreate-packages%2Fcreating-a-package%3FWT.mc_id%3Dfacebook">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-brand-facebook"></span>
+															</span>
+															<span>Facebook</span>
+														</a>
+														<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start share-email" data-bi-name="email" data-page-action-item="overflow-all" href="mailto:?subject=%5BArt%C3%ADculo%20compartido%5D%20Creaci%C3%B3n%20de%20un%20paquete%20NuGet%20con%20la%20CLI%20de%20nuget.exe%20%7C%20Microsoft%20Docs&amp;body=Creaci%C3%B3n%20de%20un%20paquete%20NuGet%20con%20la%20CLI%20de%20nuget.exe%20%7C%20Microsoft%20Docs%0A%0Ahttps%3A%2F%2Fdocs.microsoft.com%2Fes-es%2Fnuget%2Fcreate-packages%2Fcreating-a-package%3FWT.mc_id%3Demail">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-mail-message-fill"></span>
+															</span>
+															<span>Correo electrónico</span>
+														</a>
+												
+											</div>
+										</details>
+										
+									</div>
+								</div>
+							</div>
+							<!-- end article-header -->
+
+
+							<div class="">
+								<button type="button" class="border contents-button button button-clear button-sm is-hidden-tablet has-inner-focus" aria-label="Contenido" data-bi-name="contents-expand" data-contents-button="" hidden="">
+									<span class="icon">
+										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+									</span>
+									<span class="contents-expand-title">Tabla de contenido</span>
+								</button>
+							</div>
+
+							<!-- end mobile-contents button  -->
+
+							<div class="content ">
+
+
+								<h1 id="create-a-package-using-the-nugetexe-cli">Creación de un paquete con la CLI de nuget.exe</h1>
+
+
+
+										<div class="display-flex-tablet justify-content-space-between-tablet page-metadata-container">
+
+											<ul class="metadata page-metadata" data-bi-name="page info" lang="es-es" dir="ltr">
+														<li>
+Artículo														</li>
+														<li>
+															<time class="" data-article-date="" aria-label="Fecha de revisión del artículo" datetime="2021-12-21T09:21:00.000Z" data-article-date-source="git">21/12/2021</time>
+														</li>
+																<li class="readingTime">Tiempo de lectura: 20 minutos</li>
+											</ul>
+												<div class="dropdown display-flex" data-hide-on-archived="">
+													<button class="dropdown-trigger link-button font-size-sm margin-left-none margin-left-xxs-tablet has-no-wrap" aria-controls="is-this-helpful" aria-expanded="false" title="¿Le ha resultado útil esta página?">
+¿Le ha resultado útil esta página?													</button>
+													<button tabindex="-1" role="presentation" class="dropdown-trigger thumb-rating like link-button padding-xxs padding-right-none" data-binary-rating-response="rating-yes" title="Yes" type="button" data-bi-name="rating-yes" data-bi-sat="1" aria-controls="is-this-helpful" aria-expanded="false">
+														<span aria-hidden="true" class="icon docon docon-like"></span>
+													</button>
+													<button tabindex="-1" role="presentation" class="dropdown-trigger thumb-rating dislike link-button padding-xxs padding-right-none" data-binary-rating-response="rating-no" title="No" type="button" data-bi-name="rating-no" data-bi-sat="0" aria-controls="is-this-helpful" aria-expanded="false">
+														<span aria-hidden="true" class="icon docon docon-dislike"></span>
+													</button>
+													<div class="dropdown-menu border-radius" id="is-this-helpful" role="menu">
+
+
+<div class="padding-xs" data-bi-name="rating" data-binary-rating-container="">
+    <div class="binary-rating" data-binary-rating-hide-on-submit="">
+		<form class="feedback-verbatim-form" data-feedback-verbatim-form="" id="main-page-rating-container">
+        	<div class="binary-rating-buttons">
+				<h3 id="binary-rating-heading" class="font-weight-semibold margin-top-none margin-bottom-xs font-size-h5 has-caret">Valore su experiencia</h3>
+				<div class="buttons">
+					<button class="thumb-rating like margin-right-xxs button button-clear button-sm" data-binary-rating-response="rating-yes" title="Yes" type="button" data-bi-name="rating-yes" data-bi-sat="1">
+						<span aria-hidden="true" class="icon docon docon-like"></span>
+						<span>Yes</span>
+					</button>
+					<button class="thumb-rating dislike button button-clear button-sm" data-binary-rating-response="rating-no" title="No" data-bi-name="rating-no" type="button" data-bi-sat="0">
+						<span aria-hidden="true" class="icon docon docon-dislike"></span>
+						<span>No</span>
+					</button>
+				</div>
+			</div>
+			<div id="binary-verbatim-container" class="font-size-xs margin-top-xs">
+				<div class="verbatim-textarea">
+					<label for="binary-rating-textarea" class="visually-hidden">
+¿Tiene más comentarios?					</label>
+					<textarea id="binary-rating-textarea" data-binary-rating-text="" rows="4" maxlength="999" placeholder="¿Tiene más comentarios?" class="textarea has-inner-focus"></textarea>
+				</div>
+				<p class="has-line-height-reset has-text-wrap">Cuando presione el botón Enviar, sus comentarios se le enviarán a Microsoft, que los usará para mejorar sus productos y servicios. <a href="https://privacy.microsoft.com/en-us/privacystatement">Política de privacidad</a>.</p>
+				<div class="buttons buttons-right margin-top-xs margin-right-xxs">
+					<button class="submit-rating button button-primary button-filled button-sm" data-bi-name="rating-verbatim" data-binary-rating-submit="" type="submit" disabled="">Enviar</button>
+				</div>
+			</div>
+        </form>
+    </div>
+    <p data-binary-rating-onsubmit-message="main-page-rating-container" tabindex="-1" class="margin-none inner-focus" hidden="">
+Gracias.    </p>
+</div>
+													</div>
+												</div>
+											</div>
+
+
+											<nav id="center-doc-outline" class="doc-outline is-hidden-desktop" data-bi-name="intopic toc" role="navigation" aria-label="Esquema del artículo">
+												<h3>En este artículo</h3>
+											<ol><li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#decide-which-assemblies-to-package">Decisión sobre qué ensamblados empaquetar</a></li><li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#the-role-and-structure-of-the-nuspec-file">Rol y estructura del archivo .nuspec</a></li><li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#create-the-nuspec-file">Creación del archivo .nuspec</a></li><li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#choose-a-unique-package-identifier-and-setting-the-version-number">Elección de un identificador de paquete único y establecimiento del número de versión</a></li><li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#add-a-readme-and-other-files">Adición de un archivo Léame y otros archivos</a></li><li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#include-msbuild-props-and-targets-in-a-package">Inclusión de propiedades y destinos de MSBuild en un paquete</a></li><li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#run-nuget-pack-to-generate-the-nupkg-file">Ejecución del paquete nuget para generar el archivo .nupkg</a></li><li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#next-steps">Pasos siguientes</a></li></ol></nav>
+
+
+
+								<!-- <content> -->
+									<p>Con independencia de lo que haga el paquete o lo que contenga el código, use una de las herramientas de CLI, ya sea <code>nuget.exe</code> o <code>dotnet.exe</code>, para empaquetar esa funcionalidad en un componente que se pueda compartir y usar por parte de otros desarrolladores. Para instalar las herramientas de CLI de NuGet, consulte <a href="https://docs.microsoft.com/es-es/nuget/install-nuget-client-tools" data-linktype="relative-path">Instalación de las herramientas del cliente NuGet</a>. Tenga en cuenta que Visual&nbsp;Studio no incluye una herramienta de CLI de manera automática.</p>
+<ul>
+<li><p>Con los proyectos que no son de estilo SDK, normalmente proyectos de .NET Framework, siga los pasos descritos en este artículo para crear un paquete. Para instrucciones paso a paso sobre cómo usar Visual&nbsp;Studio y la CLI de <code>nuget.exe</code>, consulte <code>nuget.exe</code>.</p>
+</li>
+<li><p>En el caso de los proyectos de .NET&nbsp;Core y .NET&nbsp;Standard que usan el <a href="https://docs.microsoft.com/es-es/nuget/resources/check-project-format" data-linktype="relative-path">formato de estilo SDK</a> y cualquier otro proyecto de estilo SDK, consulte <a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package-dotnet-cli" data-linktype="relative-path">Creación de un paquete NuGet con la CLI de dotnet</a>.</p>
+</li>
+<li><p>Para los proyectos migrados desde <code>packages.config</code> a <code>packages.config</code>, utilice <a href="https://docs.microsoft.com/es-es/nuget/consume-packages/migrate-packages-config-to-package-reference#create-a-package-after-migration" data-linktype="relative-path">msbuild -t:pack</a>.</p>
+</li>
+</ul>
+<p>Desde un punto de vista técnico, un paquete NuGet es simplemente un archivo ZIP en el que se ha cambiado el nombre con la extensión <code>.nupkg</code> y cuyo contenido coincide con determinadas convenciones. En este tema se describe el proceso detallado de creación de un paquete que cumple estas convenciones.</p>
+<p>El empaquetado comienza con el código compilado (ensamblados), símbolos y otros archivos que quiera entregar como un paquete (vea <a href="https://docs.microsoft.com/es-es/nuget/create-packages/overview-and-workflow" data-linktype="relative-path">Información general y flujo de trabajo</a>). Este proceso es independiente de la compilación o, en otros casos, de la generación de los archivos que se incluyen en el paquete, aunque se puede extraer la información de un archivo de proyecto para mantener sincronizados los ensamblados y paquetes compilados.</p>
+<div class="alert is-primary">
+<p class="alert-title"><span class="docon docon-status-info-outline" aria-hidden="true"></span> Importante</p>
+<p>Este tema se aplica a proyectos que no son de estilo SDK, generalmente proyectos que no son de .NET&nbsp;Core y .NET&nbsp;Standard que usan Visual&nbsp;Studio&nbsp;2017 y versiones superiores, así como NuGet&nbsp;4.0 y versiones superiores.</p>
+</div>
+<h2 id="decide-which-assemblies-to-package" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#decide-which-assemblies-to-package" aria-labelledby="decide-which-assemblies-to-package"></a>Decisión sobre qué ensamblados empaquetar</h2>
+<p>La mayoría de paquetes de propósito generales contiene uno o más ensamblados que otros desarrolladores pueden usar en sus propios proyectos.</p>
+<ul>
+<li><p>En general, es preferible disponer de un ensamblado por cada paquete NuGet, siempre que cada ensamblado sea útil por separado. Por ejemplo, si tiene un archivo <code>Utilities.dll</code> que depende de <code>Parser.dll</code> y <code>Parser.dll</code> es útil por sí solo, entonces cree un paquete para cada uno. Esto permite a los desarrolladores usar <code>Parser.dll</code> independientemente de <code>Utilities.dll</code>.</p>
+</li>
+<li><p>Si la biblioteca está compuesta de varios ensamblados que no son útiles de forma independiente, es correcto combinarlos en un paquete. Con el ejemplo anterior, si <code>Parser.dll</code> contiene código que se usa únicamente por <code>Utilities.dll</code>, es correcto mantener <code>Parser.dll</code> en el mismo paquete.</p>
+</li>
+<li><p>De forma similar, si <code>Utilities.dll</code> depende de <code>Utilities.resources.dll</code>, cuando este último no sea útil por sí solo, colóquelos en el mismo paquete.</p>
+</li>
+</ul>
+<p>De hecho, los recursos son un caso especial. Cuando se instala un paquete en un proyecto, NuGet agrega automáticamente las referencias de ensamblado a los archivos DLL del paquete, <em>excepto</em> los que se denominan <em></em> porque se supone que son ensamblados satélite localizados (vea <a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-localized-packages" data-linktype="relative-path">Creación de paquetes localizados</a>). Por esta razón, evite usar <code>.resources.dll</code> para los archivos que, en otros casos, contienen código esencial del paquete.</p>
+<p>Si la biblioteca contiene ensamblados de interoperabilidad COM, siga las directrices adicionales descritas en <a href="https://docs.microsoft.com/es-es/nuget/create-packages/author-packages-with-com-interop-assemblies" data-linktype="relative-path">Creación de paquetes con ensamblados de interoperabilidad COM</a>.</p>
+<h2 id="the-role-and-structure-of-the-nuspec-file" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#the-role-and-structure-of-the-nuspec-file" aria-labelledby="the-role-and-structure-of-the-nuspec-file"></a>Rol y estructura del archivo .nuspec</h2>
+<p>Una vez que sepa qué archivos quiere empaquetar, el paso siguiente consiste en crear un manifiesto de paquete en un archivo <code>.nuspec</code> XML.</p>
+<p>El manifiesto:</p>
+<ol>
+<li>Describe el contenido del paquete y se incluye en el paquete.</li>
+<li>Controla la creación del paquete e indica a NuGet cómo instalar el paquete en un proyecto. Por ejemplo, el manifiesto identifica otras dependencias de paquete de forma que NuGet también pueda instalarlas cuando se instala el paquete principal.</li>
+<li>Contiene propiedades obligatorias y opcionales como se describe a continuación. Para obtener los detalles exactos, incluidas otras propiedades que no se mencionan aquí, vea <a href="https://docs.microsoft.com/es-es/nuget/reference/nuspec" data-linktype="relative-path">Referencia de .nuspec</a>.</li>
+</ol>
+<p>Propiedades necesarias:</p>
+<ul>
+<li>El identificador de paquete, que debe ser único en la galería que hospeda el paquete.</li>
+<li>Un número de versión específico con el formato <em>Principal.Secundaria.Revisión[-Sufijo]</em> donde <em>-Sufijo</em> identifica las <a href="https://docs.microsoft.com/es-es/nuget/create-packages/prerelease-packages" data-linktype="relative-path">versiones preliminares</a></li>
+<li>El título del paquete como debe aparecer en el host (por ejemplo, nuget.org)</li>
+<li>Información del autor y el propietario.</li>
+<li>Una descripción extensa del paquete.</li>
+</ul>
+<p>Propiedades opcionales comunes:</p>
+<ul>
+<li>Notas de la versión</li>
+<li>Información sobre copyright</li>
+<li>Una descripción breve de la <a href="https://docs.microsoft.com/es-es/nuget/consume-packages/install-use-packages-visual-studio" data-linktype="relative-path">interfaz de usuario del Administrador de paquetes en Visual Studio</a></li>
+<li>Un Id. de configuración regional</li>
+<li>URL de proyecto</li>
+<li>Licencia como expresión o archivo (<code>licenseUrl</code> está en desuso; use el <code>licenseUrl</code> en su lugar)</li>
+<li>Archivo de icono (<code>iconUrl</code> está en desuso; use el <code>iconUrl</code> en su lugar)</li>
+<li>Listas de dependencias y referencias</li>
+<li>Etiquetas que ayudan en las búsquedas de galería</li>
+</ul>
+<p>El siguiente archivo <code>.nuspec</code> es común (pero ficticio), con comentarios que describen las propiedades:</p>
+<div class="codeHeader" id="code-try-0" data-bi-name="code-header"><span class="language">XML</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-xml" data-author-content="&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;package xmlns=&quot;http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd&quot;&gt;
+    &lt;metadata&gt;
+        &lt;!-- Identifier that must be unique within the hosting gallery --&gt;
+        &lt;id&gt;Contoso.Utility.UsefulStuff&lt;/id&gt;
+
+        &lt;!-- Package version number that is used when resolving dependencies --&gt;
+        &lt;version&gt;1.8.3&lt;/version&gt;
+
+        &lt;!-- Authors contain text that appears directly on the gallery --&gt;
+        &lt;authors&gt;Dejana Tesic, Rajeev Dey&lt;/authors&gt;
+
+        &lt;!-- 
+            Owners are typically nuget.org identities that allow gallery
+            users to easily find other packages by the same owners.  
+        --&gt;
+        &lt;owners&gt;dejanatc, rjdey&lt;/owners&gt;
+        
+         &lt;!-- Project URL provides a link for the gallery --&gt;
+        &lt;projectUrl&gt;http://github.com/contoso/UsefulStuff&lt;/projectUrl&gt;
+
+         &lt;!-- License information is displayed on the gallery --&gt;
+        &lt;license type=&quot;expression&quot;&gt;Apache-2.0&lt;/license&gt;
+        
+
+        &lt;!-- Icon is used in Visual Studio&#39;s package manager UI --&gt;
+        &lt;icon&gt;icon.png&lt;/icon&gt;
+
+        &lt;!-- 
+            If true, this value prompts the user to accept the license when
+            installing the package. 
+        --&gt;
+        &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt;
+
+        &lt;!-- Any details about this particular release --&gt;
+        &lt;releaseNotes&gt;Bug fixes and performance improvements&lt;/releaseNotes&gt;
+
+        &lt;!-- 
+            The description can be used in package manager UI. Note that the
+            nuget.org gallery uses information you add in the portal. 
+        --&gt;
+        &lt;description&gt;Core utility functions for web applications&lt;/description&gt;
+
+        &lt;!-- Copyright information --&gt;
+        &lt;copyright&gt;Copyright ©2016 Contoso Corporation&lt;/copyright&gt;
+
+        &lt;!-- Tags appear in the gallery and can be used for tag searches --&gt;
+        &lt;tags&gt;web utility http json url parsing&lt;/tags&gt;
+
+        &lt;!-- Dependencies are automatically installed when the package is installed --&gt;
+        &lt;dependencies&gt;
+            &lt;dependency id=&quot;Newtonsoft.Json&quot; version=&quot;9.0&quot; /&gt;
+        &lt;/dependencies&gt;
+    &lt;/metadata&gt;
+
+    &lt;!-- A readme.txt to display when the package is installed --&gt;
+    &lt;files&gt;
+        &lt;file src=&quot;readme.txt&quot; target=&quot;&quot; /&gt;
+        &lt;file src=&quot;icon.png&quot; target=&quot;&quot; /&gt;
+    &lt;/files&gt;
+&lt;/package&gt;
+"><span><span class="hljs-meta">&lt;?xml version="1.0"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">package</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">metadata</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- Identifier that must be unique within the hosting gallery --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>Contoso.Utility.UsefulStuff<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- Package version number that is used when resolving dependencies --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.8.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- Authors contain text that appears directly on the gallery --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">authors</span>&gt;</span>Dejana Tesic, Rajeev Dey<span class="hljs-tag">&lt;/<span class="hljs-name">authors</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- 
+            Owners are typically nuget.org identities that allow gallery
+            users to easily find other packages by the same owners.  
+        --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">owners</span>&gt;</span>dejanatc, rjdey<span class="hljs-tag">&lt;/<span class="hljs-name">owners</span>&gt;</span>
+        
+         <span class="hljs-comment">&lt;!-- Project URL provides a link for the gallery --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">projectUrl</span>&gt;</span>http://github.com/contoso/UsefulStuff<span class="hljs-tag">&lt;/<span class="hljs-name">projectUrl</span>&gt;</span>
+
+         <span class="hljs-comment">&lt;!-- License information is displayed on the gallery --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">license</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"expression"</span>&gt;</span>Apache-2.0<span class="hljs-tag">&lt;/<span class="hljs-name">license</span>&gt;</span>
+        
+
+        <span class="hljs-comment">&lt;!-- Icon is used in Visual Studio's package manager UI --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">icon</span>&gt;</span>icon.png<span class="hljs-tag">&lt;/<span class="hljs-name">icon</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- 
+            If true, this value prompts the user to accept the license when
+            installing the package. 
+        --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">requireLicenseAcceptance</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">requireLicenseAcceptance</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- Any details about this particular release --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">releaseNotes</span>&gt;</span>Bug fixes and performance improvements<span class="hljs-tag">&lt;/<span class="hljs-name">releaseNotes</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- 
+            The description can be used in package manager UI. Note that the
+            nuget.org gallery uses information you add in the portal. 
+        --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>Core utility functions for web applications<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- Copyright information --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">copyright</span>&gt;</span>Copyright ©2016 Contoso Corporation<span class="hljs-tag">&lt;/<span class="hljs-name">copyright</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- Tags appear in the gallery and can be used for tag searches --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tags</span>&gt;</span>web utility http json url parsing<span class="hljs-tag">&lt;/<span class="hljs-name">tags</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- Dependencies are automatically installed when the package is installed --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"Newtonsoft.Json"</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"9.0"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">metadata</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- A readme.txt to display when the package is installed --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">files</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">file</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"readme.txt"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">""</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">file</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"icon.png"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">""</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">files</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">package</span>&gt;</span>
+</span></code></pre>
+<p>Para obtener más información sobre cómo declarar dependencias y especificar números de versión, consulte <a href="https://docs.microsoft.com/es-es/nuget/reference/packages-config" data-linktype="relative-path">packages.config</a> y <a href="https://docs.microsoft.com/es-es/nuget/concepts/package-versioning" data-linktype="relative-path">Control de versiones de paquetes</a>. También es posible exponer activos directamente desde las dependencias en el paquete mediante los atributos <code>include</code> y <code>exclude</code> del elemento <code>dependency</code>. Vea <a href="https://docs.microsoft.com/es-es/nuget/reference/nuspec#dependencies" data-linktype="relative-path">Referencia de .nuspec: dependencias</a>.</p>
+<p>Dado que el manifiesto se incluye en el paquete creado a partir de él, puede buscar cualquier número de ejemplos adicionales mediante el examen de los paquetes existentes. Una buena fuente es la carpeta <em>global-packages</em> en el equipo, cuya ubicación se devuelve mediante el comando siguiente:</p>
+<div class="codeHeader" id="code-try-1" data-bi-name="code-header"><span class="language">cli</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-cli" data-author-content="nuget locals -list global-packages
+">nuget locals -list global-packages
+</code></pre>
+<p>Vaya a cualquier carpeta <em>paquete\versión</em>, copie el archivo <em></em> a un archivo <code>.zip</code>, después abra ese archivo <code>.zip</code> y examine <code>.nuspec</code> en su interior.</p>
+<div class="alert is-info">
+<p class="alert-title"><span class="docon docon-status-error-outline" aria-hidden="true"></span> Nota</p>
+<p>Al crear un archivo <code>.nuspec</code> desde un proyecto de Visual Studio, el manifiesto contiene tokens que se reemplazan con información del proyecto cuando se compila el paquete. Vea <a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#from-a-visual-studio-project" data-linktype="self-bookmark">Creación del archivo .nuspec desde un proyecto de Visual Studio</a>.</p>
+</div>
+<h2 id="create-the-nuspec-file" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#create-the-nuspec-file" aria-labelledby="create-the-nuspec-file"></a>Creación del archivo .nuspec</h2>
+<p>La creación de un manifiesto completo normalmente comienza con un archivo <code>.nuspec</code> básico generado a través de uno de los métodos siguientes:</p>
+<ul>
+<li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#from-a-convention-based-working-directory" data-linktype="self-bookmark">Un directorio de trabajo basado en convenciones</a></li>
+<li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#from-an-assembly-dll" data-linktype="self-bookmark">Un archivo DLL de ensamblado</a></li>
+<li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#from-a-visual-studio-project" data-linktype="self-bookmark">Un proyecto de Visual Studio</a></li>
+<li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#new-file-with-default-values" data-linktype="self-bookmark">Archivo nuevo con valores predeterminados</a></li>
+</ul>
+<p>Después, se edita el archivo manualmente para que describa el contenido exacto que quiere en el paquete final.</p>
+<div class="alert is-primary">
+<p class="alert-title"><span class="docon docon-status-info-outline" aria-hidden="true"></span> Importante</p>
+<p>Los archivos <code>.nuspec</code> generados contienen marcadores de posición que se deben modificar antes de crear el paquete con el comando <code>nuget pack</code>. Si <code>.nuspec</code> contiene marcadores de posición, se produce un error en el comando.</p>
+</div>
+<h3 id="from-a-convention-based-working-directory" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#from-a-convention-based-working-directory" aria-labelledby="from-a-convention-based-working-directory"></a>Desde un directorio de trabajo basado en convenciones</h3>
+<p>Dado que un paquete NuGet es simplemente un archivo ZIP que se ha cambiado de nombre con la extensión <code>.nupkg</code>, a menudo es más fácil crear la estructura de carpetas que quiere en el sistema de archivos local y, después, crear el archivo <code>.nuspec</code> directamente desde esa estructura. Después, el comando <code>nuget pack</code> agrega automáticamente todos los archivos de esa estructura de carpetas (sin incluir las carpetas que comienzan por <code>.</code>, lo que permite mantener archivos privados en la misma estructura).</p>
+<p>La ventaja de este enfoque es que no es necesario especificar en el manifiesto qué archivos se van a incluir en el paquete (como se explica más adelante en este tema). Puede hacer que el proceso de compilación genere simplemente la estructura de carpetas exacta que se agrega al paquete e incluir otros archivos que en otros casos es posible que no formen parte de un proyecto:</p>
+<ul>
+<li>Contenido y código fuente que debe insertarse en el proyecto de destino.</li>
+<li>Scripts de PowerShell</li>
+<li>Transformaciones de archivos de código existentes de configuración y código fuente en un proyecto.</li>
+</ul>
+<p>Las convenciones de carpeta son las siguientes:</p>
+<div class="table-scroll-wrapper has-inner-focus" tabindex="0" role="group" aria-label="Datos desplazables horizontalmente"><table class="table"><caption class="visually-hidden">Desde un directorio de trabajo basado en convenciones</caption>
+<thead>
+<tr>
+<th>Carpeta</th>
+<th>Descripción</th>
+<th>Acción tras la instalación del paquete</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(raíz)</td>
+<td>Ubicación de Léame.txt</td>
+<td>Visual Studio muestra un archivo Léame.txt en la raíz del paquete cuando se instala el paquete.</td>
+</tr>
+<tr>
+<td>lib/{tfm}</td>
+<td>Archivos de ensamblado (<code>.dll</code>), documentación (<code>.xml</code>) y símbolos (<code>.pdb</code>) para el Moniker de plataforma de destino (TFM) indicado</td>
+<td>Los ensamblados se agregan como referencias para la compilación, así como el tiempo de ejecución; <code>.xml</code> y <code>.pdb</code> se copian en carpetas de proyecto. Vea <a href="https://docs.microsoft.com/es-es/nuget/create-packages/supporting-multiple-target-frameworks" data-linktype="relative-path">Compatibilidad con varias plataformas de destino</a> para obtener información sobre cómo crear subcarpetas específicas de la plataforma de destino.</td>
+</tr>
+<tr>
+<td>ref/{tfm}</td>
+<td>Archivos de ensamblado (<code>.dll</code>) y símbolos (<code>.pdb</code>) para el Moniker de la plataforma de destino (TFM) indicado</td>
+<td>Los ensamblados se agregan como referencias solo durante el tiempo de compilación; así pues, nada se copiará en la carpeta bin del proyecto.</td>
+</tr>
+<tr>
+<td>runtimes</td>
+<td>Archivo de ensamblado (<code>.dll</code>), símbolos (<code>.pdb</code>) y recursos nativos (<code>.pri</code>) específicos de la arquitectura</td>
+<td>Los ensamblados se agregan como referencias solo durante el tiempo de ejecución; los demás archivos se copian en carpetas de proyecto. Siempre debe haber un ensamblado específico de <code>AnyCPU</code> (TFM) correspondiente en la carpeta <code>/ref/{tfm}</code> para proporcionar el ensamblado de tiempo de compilación correspondiente. Vea <a href="https://docs.microsoft.com/es-es/nuget/create-packages/supporting-multiple-target-frameworks" data-linktype="relative-path">Compatibilidad con varias plataformas de destino</a>.</td>
+</tr>
+<tr>
+<td>contenido</td>
+<td>Archivos arbitrarios</td>
+<td>El contenido se copia en la raíz del proyecto. Piense en la carpeta <strong>content</strong> como la raíz de la aplicación de destino que consume el paquete en última instancia. Para que el paquete agregue una imagen en la carpeta <em>/images</em> de la aplicación, colóquelo en la carpeta <em>content/images</em> del paquete.</td>
+</tr>
+<tr>
+<td>compilación</td>
+<td><em>(3.x+)</em> Archivos <em></em> y <code>.props</code> de MSBuild</td>
+<td>Se insertan automáticamente en el proyecto.</td>
+</tr>
+<tr>
+<td>buildMultiTargeting</td>
+<td><em>(4.0+)</em> Archivos <em></em> y <code>.props</code> de MSBuild de los destinos multiplataforma</td>
+<td>Se insertan automáticamente en el proyecto.</td>
+</tr>
+<tr>
+<td>buildTransitive</td>
+<td><em>(5.0 +) </em> Los archivos <em></em> y <code>.props</code> de MSBuild que fluyen de manera transitiva a cualquier proyecto de consumo. Vea la página de la <a href="https://github.com/NuGet/Home/wiki/Allow-package--authors-to-define-build-assets-transitive-behavior" data-linktype="external">característica</a>.</td>
+<td>Se insertan automáticamente en el proyecto.</td>
+</tr>
+<tr>
+<td>tools</td>
+<td>Scripts de PowerShell y programas accesibles desde la consola del Administrador de paquetes</td>
+<td>La carpeta <code>tools</code> se agrega a la variable de entorno <code>PATH</code> solo para la consola del Administrador de paquetes (en concreto, <code>tools</code> a <code>PATH</code> como se establece para MSBuild al compilar el proyecto).</td>
+</tr>
+</tbody>
+</table></div>
+<p>Dado que la estructura de carpetas puede contener cualquier número de ensamblados para cualquier número de plataformas de destino, este método es necesario al crear paquetes que admiten varias plataformas.</p>
+<p>En cualquier caso, una vez que tenga la estructura de carpetas deseada, ejecute el comando siguiente en esa carpeta para crear el archivo <code>.nuspec</code>:</p>
+<div class="codeHeader" id="code-try-2" data-bi-name="code-header"><span class="language">cli</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-cli" data-author-content="nuget spec
+">nuget spec
+</code></pre>
+<p>Una vez más, el archivo <code>.nuspec</code> generado no contiene ninguna referencia explícita a los archivos de la estructura de carpetas. NuGet incluye de manera automática todos los archivos cuando se crea el paquete. Pero necesitará modificar los valores de marcador de posición en otras partes del manifiesto.</p>
+<h3 id="from-an-assembly-dll" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#from-an-assembly-dll" aria-labelledby="from-an-assembly-dll"></a>Desde un archivo DLL de ensamblado</h3>
+<p>En el simple caso de creación de un paquete desde un ensamblado, puede generar un archivo <code>.nuspec</code> a partir de los metadatos del ensamblado con el comando siguiente:</p>
+<div class="codeHeader" id="code-try-3" data-bi-name="code-header"><span class="language">cli</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-cli" data-author-content="nuget spec &lt;assembly-name&gt;.dll
+">nuget spec &lt;assembly-name&gt;.dll
+</code></pre>
+<p>El uso de este formato reemplaza algunos marcadores de posición en el manifiesto con valores específicos del ensamblado. Por ejemplo, la propiedad <code>&lt;id&gt;</code> se establece en el nombre del ensamblado y <code>&lt;version&gt;</code> se establece en la versión del ensamblado. Pero otras propiedades del manifiesto no tienen valores coincidentes en el ensamblado y, por tanto, aún contienen marcadores de posición.</p>
+<h3 id="from-a-visual-studio-project" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#from-a-visual-studio-project" aria-labelledby="from-a-visual-studio-project"></a>Desde un proyecto de Visual Studio</h3>
+<p>La creación de un archivo <code>.nuspec</code> desde un archivo <code>.csproj</code> o <code>.vbproj</code> resulta práctica porque, de manera automática, se hace referencia como dependencias a otros paquetes que se han instalado en los proyectos. Simplemente use el comando siguiente en la misma carpeta que el archivo de proyecto:</p>
+<div class="codeHeader" id="code-try-4" data-bi-name="code-header"><span class="language">cli</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-cli" data-author-content="# Use in a folder containing a project file &lt;project-name&gt;.csproj or &lt;project-name&gt;.vbproj
+nuget spec
+"># Use in a folder containing a project file &lt;project-name&gt;.csproj or &lt;project-name&gt;.vbproj
+nuget spec
+</code></pre>
+<p>El archivo <code>&lt;project-name&gt;.nuspec</code> resultante contiene <code>&lt;project-name&gt;.nuspec</code> que se reemplazan durante el empaquetado con valores del proyecto, incluidas las referencias a todos los demás paquetes que ya se han instalado.</p>
+<p>Si tiene dependencias de paquete que se van a incluir en el archivo <em>.nuspec</em>, use en su lugar <em></em> y obtenga el archivo <em>.nuspec</em> en el archivo <em>.nupkg</em> generado. Por ejemplo, use el siguiente comando:</p>
+<div class="codeHeader" id="code-try-5" data-bi-name="code-header"><span class="language">cli</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-cli" data-author-content="# Use in a folder containing a project file &lt;project-name&gt;.csproj or &lt;project-name&gt;.vbproj
+nuget pack myproject.csproj
+"># Use in a folder containing a project file &lt;project-name&gt;.csproj or &lt;project-name&gt;.vbproj
+nuget pack myproject.csproj
+</code></pre>
+<p>Un token está delimitado por símbolos <code>$</code> en ambos lados de la propiedad del proyecto. Por ejemplo, el valor <code>&lt;id&gt;</code> en un manifiesto generado de este modo normalmente tiene este aspecto:</p>
+<div class="codeHeader" id="code-try-6" data-bi-name="code-header"><span class="language">XML</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-xml" data-author-content="&lt;id&gt;$id$&lt;/id&gt;
+"><span><span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>$id$<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+</span></code></pre>
+<p>Este token se reemplaza por el valor <code>AssemblyName</code> del archivo de proyecto en tiempo de empaquetado. Para obtener la asignación exacta de valores de proyecto a tokens <code>.nuspec</code>, vea la <code>.nuspec</code>.</p>
+<p>Los tokens le liberan de la necesidad de actualizar valores esenciales como el número de versión en el archivo <code>.nuspec</code> cuando se actualiza el proyecto. (Siempre puede reemplazar los tokens con valores literales, si quiere).</p>
+<p>Tenga en cuenta que hay varias opciones de empaquetado adicionales disponibles cuando se trabaja desde un proyecto de Visual Studio, como se describe en <a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#run-nuget-pack-to-generate-the-nupkg-file" data-linktype="self-bookmark">Ejecución del paquete nuget para generar el archivo .nupkg</a> más adelante.</p>
+<h4 id="solution-level-packages" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#solution-level-packages" aria-labelledby="solution-level-packages"></a>Paquetes de nivel de solución</h4>
+<p><em>Solo para NuGet 2.x. No disponible en NuGet 3.0 y versiones posteriores.</em></p>
+<p>En NuGet 2.x se admite la noción de paquete de nivel de solución que instala herramientas o comandos adicionales para la consola del Administrador de paquetes (el contenido de la carpeta <code>tools</code>), pero no agrega referencias, contenido o personalizaciones de compilación a ninguno de los proyectos de la solución. Estos paquetes no contienen ningún archivo en su carpetas <code>lib</code>, <code>content</code> o <code>build</code> directas, y ninguna de sus dependencias tienen archivos en sus respectivas carpetas <code>lib</code>, <code>content</code> o <code>build</code>.</p>
+<p>NuGet realiza el seguimiento de los paquetes de nivel de la solución instalados en un archivo <code>packages.config</code> en la carpeta <code>.nuget</code>, en lugar del archivo <code>packages.config</code> del proyecto.</p>
+<h3 id="new-file-with-default-values" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#new-file-with-default-values" aria-labelledby="new-file-with-default-values"></a>Archivo nuevo con valores predeterminados</h3>
+<p>El comando siguiente crea un manifiesto predeterminado con marcadores de posición, lo que garantiza que comience con la estructura de archivos adecuada:</p>
+<div class="codeHeader" id="code-try-7" data-bi-name="code-header"><span class="language">cli</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-cli" data-author-content="nuget spec [&lt;package-name&gt;]
+">nuget spec [&lt;package-name&gt;]
+</code></pre>
+<p>Si se omite &lt;nombre_del_paquete&gt;, el archivo resultante es <code>Package.nuspec</code>. Si proporciona un nombre como <code>Contoso.Utility.UsefulStuff</code>, el archivo es <code>Contoso.Utility.UsefulStuff.nuspec</code>.</p>
+<p>El archivo <code>.nuspec</code> resultante contiene marcadores de posición para valores como <code>projectUrl</code>. Asegúrese de modificar el archivo antes de usarlo para crear el archivo <code>.nupkg</code> definitivo.</p>
+<h2 id="choose-a-unique-package-identifier-and-setting-the-version-number" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#choose-a-unique-package-identifier-and-setting-the-version-number" aria-labelledby="choose-a-unique-package-identifier-and-setting-the-version-number"></a>Elección de un identificador de paquete único y establecimiento del número de versión</h2>
+<p>El identificador del paquete (el elemento <code>&lt;id&gt;</code>) y el número de versión (el elemento <code>&lt;version&gt;</code>) son los dos valores más importantes del manifiesto ya que identifican de forma única el código exacto que se incluye en el paquete.</p>
+<p><strong>Procedimientos recomendados para el identificador del paquete:</strong></p>
+<ul>
+<li><strong>Unicidad</strong>: el identificador debe ser único en nuget.org o en la galería que hospede el paquete. Antes de decidirse por un identificador, busque en la galería aplicable para comprobar si el nombre ya está en uso. Para evitar conflictos, un buen patrón consiste en usar el nombre de la empresa como la primera parte del identificador, por ejemplo <code>Contoso.</code>.</li>
+<li><strong>Nombres de tipo espacio de nombres</strong>: siguen un patrón similar a los espacios de nombres de .NET, con notación de puntos en lugar de guiones. Por ejemplo, use <code>Contoso.Utility.UsefulStuff</code> en lugar de <code>Contoso-Utility-UsefulStuff</code> o <code>Contoso_Utility_UsefulStuff</code>. También es útil para los consumidores cuando el identificador del paquete coincide con los espacios de nombres que se usan en el código.</li>
+<li><strong>Paquetes de ejemplo</strong>: si genera un paquete de código de ejemplo que muestra cómo usar otro paquete, adjunte <strong></strong> como sufijo al identificador, como en <code>Contoso.Utility.UsefulStuff.Sample</code>. (El paquete de ejemplo tendría evidentemente una dependencia en el otro paquete). Al crear un paquete de ejemplo, use el método de directorio de trabajo basado en convenciones descrito anteriormente. En la carpeta <code>content</code>, organice el código de ejemplo en una carpeta denominada <code>\Samples\&lt;identifier&gt;</code> como en <code>\Samples\Contoso.Utility.UsefulStuff.Sample</code>.</li>
+</ul>
+<p><strong>Procedimientos recomendados para la versión del paquete:</strong></p>
+<ul>
+<li>En general, establezca la versión del paquete para que coincida con la biblioteca, aunque esto no es estrictamente necesario. Esto es sencillo cuando se limita un paquete a un único ensamblado, como se describió anteriormente en <a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#decide-which-assemblies-to-package" data-linktype="self-bookmark">Decidir qué ensamblados empaquetar</a>. En general, recuerde que el propio NuGet trabaja con versiones del paquete al resolver las dependencias, no con versiones de ensamblado.</li>
+<li>Cuando se usa un esquema de la versión no estándar, asegúrese de tener en cuenta las reglas de control de versiones de NuGet, como se explica en <a href="https://docs.microsoft.com/es-es/nuget/concepts/package-versioning" data-linktype="relative-path">Control de versiones de paquetes</a>.</li>
+</ul>
+<blockquote>
+<p>La siguiente serie de entradas de blog breves también es útil para entender el control de versiones:</p>
+<ul>
+<li><a href="https://blog.davidebbo.com/2011/01/nuget-versioning-part-1-taking-on-dll.html" data-linktype="external">Parte 1: Taking on DLL Hell</a> (Parte 1: Enfrentarse al infierno de los archivos DLL)</li>
+<li><a href="https://blog.davidebbo.com/2011/01/nuget-versioning-part-2-core-algorithm.html" data-linktype="external">Parte 2: The core algorithm</a> (Parte 2: El algoritmo básico)</li>
+<li><a href="https://blog.davidebbo.com/2011/01/nuget-versioning-part-3-unification-via.html" data-linktype="external">Part 3: Unification via Binding Redirects</a> (Parte 3: Unificación mediante redirecciones de enlaces)</li>
+</ul>
+</blockquote>
+<h2 id="add-a-readme-and-other-files" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#add-a-readme-and-other-files" aria-labelledby="add-a-readme-and-other-files"></a>Adición de un archivo Léame y otros archivos</h2>
+<p>Para especificar directamente los archivos que se van a incluir en el paquete, use el nodo <code>&lt;files&gt;</code> en el archivo <code>.nuspec</code>, que <code>&lt;files&gt;</code> a la etiqueta <code>&lt;metadata&gt;</code>:</p>
+<div class="codeHeader" id="code-try-8" data-bi-name="code-header"><span class="language">XML</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-xml" data-author-content="&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;package xmlns=&quot;http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd&quot;&gt;
+    &lt;metadata&gt;
+    &lt;!-- ... --&gt;
+    &lt;/metadata&gt;
+    &lt;files&gt;
+        &lt;!-- Add a readme --&gt;
+        &lt;file src=&quot;readme.txt&quot; target=&quot;&quot; /&gt;
+
+        &lt;!-- Add files from an arbitrary folder that&#39;s not necessarily in the project --&gt;
+        &lt;file src=&quot;..\..\SomeRoot\**\*.*&quot; target=&quot;&quot; /&gt;
+    &lt;/files&gt;
+&lt;/package&gt;
+"><span><span class="hljs-meta">&lt;?xml version="1.0"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">package</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">metadata</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- ... --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">metadata</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">files</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- Add a readme --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">file</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"readme.txt"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">""</span> /&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- Add files from an arbitrary folder that's not necessarily in the project --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">file</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"..\..\SomeRoot\**\*.*"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">""</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">files</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">package</span>&gt;</span>
+</span></code></pre>
+<div class="alert is-success">
+<p class="alert-title"><span class="docon docon-lightbulb" aria-hidden="true"></span> Sugerencia</p>
+<p>Cuando se usa el enfoque de directorio de trabajo basado en convenciones, puede colocar el archivo Léame.txt en la raíz del paquete y otro contenido en la carpeta <code>content</code>. En el manifiesto no se necesitan elementos <code>&lt;file&gt;</code>.</p>
+</div>
+<p>Al incluir un archivo denominado <code>readme.txt</code> en la raíz del paquete, Visual Studio muestra el contenido de ese archivo como texto sin formato inmediatamente después de instalar el paquete directamente. (Los archivos Léame no se muestran para paquetes instalados como dependencias). Por ejemplo, este es el aspecto del archivo Léame para el paquete HtmlAgilityPack:</p>
+<p><img src="./Creación de un paquete NuGet con la CLI de nuget.exe _ Microsoft Docs_files/create_01-showreadme.png" alt="La presentación de un archivo Léame para un paquete NuGet tras la instalación" data-linktype="relative-path"></p>
+<div class="alert is-info">
+<p class="alert-title"><span class="docon docon-status-error-outline" aria-hidden="true"></span> Nota</p>
+<p>Si incluye un nodo <code>&lt;files&gt;</code> vacío en el archivo <code>.nuspec</code>, NuGet no incluye ningún otro contenido en el paquete que no sea el que aparece en la carpeta <code>lib</code>.</p>
+</div>
+<h2 id="include-msbuild-props-and-targets-in-a-package" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#include-msbuild-props-and-targets-in-a-package" aria-labelledby="include-msbuild-props-and-targets-in-a-package"></a>Inclusión de propiedades y destinos de MSBuild en un paquete</h2>
+<p>En algunos casos, es posible que quiera agregar destinos de compilación personalizados o propiedades en proyectos en los que se consume el paquete, como la ejecución de una herramienta o un proceso personalizado durante la compilación. Para ello, coloque los archivos en el formato <code>&lt;package_id&gt;.targets</code> o <code>&lt;package_id&gt;.props</code> (por ejemplo <code>Contoso.Utility.UsefulStuff.targets</code>) dentro de la carpeta <code>\build</code> del proyecto.</p>
+<p>Los archivos en la carpeta <code>\build</code> raíz se consideran adecuados para todas las plataformas de destino. Para proporcionar archivos específicos de la plataforma, colóquelos primero en las subcarpetas adecuadas, como las siguientes:</p>
+<div class="codeHeader" id="code-try-9" data-bi-name="code-header"><span class="language"></span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code data-author-content="    \build
+        \netstandard1.4
+            \Contoso.Utility.UsefulStuff.props
+            \Contoso.Utility.UsefulStuff.targets
+        \net462
+            \Contoso.Utility.UsefulStuff.props
+            \Contoso.Utility.UsefulStuff.targets
+">    \build
+        \netstandard1.4
+            \Contoso.Utility.UsefulStuff.props
+            \Contoso.Utility.UsefulStuff.targets
+        \net462
+            \Contoso.Utility.UsefulStuff.props
+            \Contoso.Utility.UsefulStuff.targets
+</code></pre>
+<p>Después, en el archivo <code>.nuspec</code>, asegúrese de hacer referencia a estos archivos en el nodo <code>&lt;files&gt;</code>:</p>
+<div class="codeHeader" id="code-try-10" data-bi-name="code-header"><span class="language">XML</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-xml" data-author-content="&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;package &gt;
+    &lt;metadata minClientVersion=&quot;2.5&quot;&gt;
+    &lt;!-- ... --&gt;
+    &lt;/metadata&gt;
+    &lt;files&gt;
+        &lt;!-- Include everything in \build --&gt;
+        &lt;file src=&quot;build\**&quot; target=&quot;build&quot; /&gt;
+
+        &lt;!-- Other files --&gt;
+        &lt;!-- ... --&gt;
+    &lt;/files&gt;
+&lt;/package&gt;
+"><span><span class="hljs-meta">&lt;?xml version="1.0"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">package</span> &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">metadata</span> <span class="hljs-attr">minClientVersion</span>=<span class="hljs-string">"2.5"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- ... --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">metadata</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">files</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- Include everything in \build --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">file</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"build\**"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"build"</span> /&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- Other files --&gt;</span>
+        <span class="hljs-comment">&lt;!-- ... --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">files</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">package</span>&gt;</span>
+</span></code></pre>
+<p>Con <a href="https://docs.microsoft.com/es-es/nuget/release-notes/nuget-2.5#automatic-import-of-msbuild-targets-and-props-files" data-linktype="relative-path">NuGet 2.5 se introdujo</a> la inclusión de propiedades y destinos de MSBuild en un paquete. Por tanto, se recomienda agregar el atributo <a href="https://docs.microsoft.com/es-es/nuget/release-notes/nuget-2.5#automatic-import-of-msbuild-targets-and-props-files" data-linktype="relative-path"></a> al elemento <code>metadata</code> para indicar la versión de cliente de NuGet mínima necesaria para usar el paquete.</p>
+<p>Cuando NuGet instala un paquete con archivos <code>\build</code>, agrega elementos <code>&lt;Import&gt;</code> de MSBuild al archivo de proyecto que apunta a los archivos <code>.targets</code> y <code>.props</code>. (<code>.props</code> se agrega en la parte superior del archivo del proyecto; <code>.targets</code> se agrega al final). Se agrega un elemento condicional <code>&lt;Import&gt;</code> de MSBuild independiente para cada plataforma de destino.</p>
+<p>Los archivos <code>.props</code> y <code>.targets</code> de MSBuild de los destinos multiplataforma pueden colocarse en la carpeta <code>\buildMultiTargeting</code>. Durante la instalación de paquetes, NuGet agrega los elementos <code>&lt;Import&gt;</code> correspondientes al archivo de proyecto, con la condición de que no se establezca la plataforma de destino (la propiedad <code>$(TargetFramework)</code> de MSBuild debe estar vacía).</p>
+<p>Con NuGet 3.x, los destinos no se agregan al proyecto pero en su lugar se ponen a disposición a través de <code>{projectName}.nuget.g.targets</code> y <code>{projectName}.nuget.g.props</code>.</p>
+<h2 id="run-nuget-pack-to-generate-the-nupkg-file" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#run-nuget-pack-to-generate-the-nupkg-file" aria-labelledby="run-nuget-pack-to-generate-the-nupkg-file"></a>Ejecución del paquete nuget para generar el archivo .nupkg</h2>
+<p>Cuando se usa un ensamblado o el directorio de trabajo basado en convenciones, cree un paquete mediante la ejecución de <code>nuget pack</code> con el archivo <code>.nuspec</code>, reemplazando <code>&lt;project-name&gt;</code> con el nombre de archivo específico:</p>
+<div class="codeHeader" id="code-try-11" data-bi-name="code-header"><span class="language">cli</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-cli" data-author-content="nuget pack &lt;project-name&gt;.nuspec
+">nuget pack &lt;project-name&gt;.nuspec
+</code></pre>
+<p>Cuando se usa un proyecto de Visual Studio, ejecute <code>nuget pack</code> con el archivo de proyecto, que carga automáticamente el archivo <code>.nuspec</code> del proyecto y reemplaza los tokens que contiene mediante valores del archivo de proyecto:</p>
+<div class="codeHeader" id="code-try-12" data-bi-name="code-header"><span class="language">cli</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-cli" data-author-content="nuget pack &lt;project-name&gt;.csproj
+">nuget pack &lt;project-name&gt;.csproj
+</code></pre>
+<div class="alert is-info">
+<p class="alert-title"><span class="docon docon-status-error-outline" aria-hidden="true"></span> Nota</p>
+<p>Es necesario usar el archivo de proyecto directamente para el reemplazo de tokens porque el proyecto es el origen de los valores de token. El reemplazo de tokens no se realiza si se usa <code>nuget pack</code> con un archivo <code>.nuspec</code>.</p>
+</div>
+<p>En todos los casos, <code>nuget pack</code> excluye las carpetas que comienzan con un punto, como <code>.git</code> o <code>.hg</code>.</p>
+<p>NuGet indica si hay errores en el archivo <code>.nuspec</code> que se deben corregir, como olvidar cambiar valores de marcador de posición en el manifiesto.</p>
+<p>Una vez que <code>nuget pack</code> es correcto, tendrá un archivo <code>.nupkg</code> que se puede publicar en una galería adecuada como se describe en <code>nuget pack</code>.</p>
+<div class="alert is-success">
+<p class="alert-title"><span class="docon docon-lightbulb" aria-hidden="true"></span> Sugerencia</p>
+<p>Una manera útil de examinar un paquete después de crearlo consiste en abrirlo en la herramienta <a href="https://github.com/NuGetPackageExplorer/NuGetPackageExplorer" data-linktype="external">Explorador de paquetes</a>. Esto ofrece una vista gráfica del contenido del paquete y el manifiesto. También puede cambiar el nombre del archivo <code>.nupkg</code> resultante a un archivo <code>.zip</code> y explorar directamente su contenido.</p>
+</div>
+<h3 id="additional-options" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#additional-options" aria-labelledby="additional-options"></a>Opciones adicionales</h3>
+<p>Puede usar diversos modificadores de línea de comandos con <code>nuget pack</code> para excluir archivos, reemplazar el número de versión en el manifiesto y cambiar la carpeta de salida, entre otras características. Para obtener una lista completa, consulte la <a href="https://docs.microsoft.com/es-es/nuget/reference/cli-reference/cli-ref-pack" data-linktype="relative-path">referencia del comando pack</a>.</p>
+<p>Las opciones siguientes son algunas comunes en proyectos de Visual Studio:</p>
+<ul>
+<li><p><strong>Proyectos a los que se hace referencia</strong>: si el proyecto hace referencia a otros proyectos, puede agregar los proyectos a los que se hace referencia como parte del paquete, o bien como dependencias, mediante la opción <strong></strong>:</p>
+<div class="codeHeader" id="code-try-13" data-bi-name="code-header"><span class="language">cli</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-cli" data-author-content="nuget pack MyProject.csproj -IncludeReferencedProjects
+">nuget pack MyProject.csproj -IncludeReferencedProjects
+</code></pre>
+<p>Este proceso de inclusión es recursivo, por lo que si <code>MyProject.csproj</code> hace referencia a los proyectos B y C, y esos proyectos hacen referencia a D, E y F, los archivos de B, C, D, E y F se incluyen en el paquete.</p>
+<p>Si un proyecto al que se hace referencia incluye un archivo <code>.nuspec</code> propio, en su lugar NuGet agrega ese proyecto al que se hace referencia como una dependencia.  Debe empaquetar y publicar ese proyecto por separado.</p>
+</li>
+<li><p><strong>Configuración de compilación</strong>: de forma predeterminada, NuGet usa la configuración de compilación predeterminada establecida en el archivo de proyecto, normalmente <em>Debug</em>. Para empaquetar archivos de una configuración de compilación diferente, como <em>Release</em>, use la opción <em></em> con la configuración:</p>
+<div class="codeHeader" id="code-try-14" data-bi-name="code-header"><span class="language">cli</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-cli" data-author-content="nuget pack MyProject.csproj -properties Configuration=Release
+">nuget pack MyProject.csproj -properties Configuration=Release
+</code></pre>
+</li>
+<li><p><strong>Símbolos</strong>: para incluir símbolos que permitan a los consumidores recorrer el código del paquete en el depurador, use la opción <strong></strong>:</p>
+<div class="codeHeader" id="code-try-15" data-bi-name="code-header"><span class="language">cli</span><button type="button" class="action position-relative" data-bi-name="copy" aria-label="Copiar código">
+				<span class="icon margin-right-xxs">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copiar</span>
+				<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon font-size-lg">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-cli" data-author-content="nuget pack MyProject.csproj -symbols
+">nuget pack MyProject.csproj -symbols
+</code></pre>
+</li>
+</ul>
+<h3 id="test-package-installation" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#test-package-installation" aria-labelledby="test-package-installation"></a>Prueba de instalación del paquete</h3>
+<p>Antes de publicar un paquete, normalmente querrá probar el proceso de instalación de un paquete en un proyecto. Las pruebas aseguran que los archivos necesarios acaban en los lugares correctos en el proyecto.</p>
+<p>Puede probar las instalaciones de forma manual en Visual Studio o en la línea de comandos mediante los <a href="https://docs.microsoft.com/es-es/nuget/consume-packages/overview-and-workflow#ways-to-install-a-nuget-package" data-linktype="relative-path">pasos de instalación de paquetes</a> normales.</p>
+<p>Para las pruebas automatizadas, el proceso básico es el siguiente:</p>
+<ol>
+<li>Copie el archivo <code>.nupkg</code> en una carpeta local.</li>
+<li>Agregue la carpeta a los orígenes de paquete mediante el comando <code>nuget sources add -name &lt;name&gt; -source &lt;path&gt;</code> (vea <code>nuget sources add -name &lt;name&gt; -source &lt;path&gt;</code>). Tenga en cuenta que solo es necesario establecer este origen local una vez en un equipo determinado.</li>
+<li>Instale el paquete desde ese origen mediante <code>nuget install &lt;packageID&gt; -source &lt;name&gt;</code>, donde <code>&lt;name&gt;</code> coincide con el nombre del origen tal como se indicó a <code>nuget sources</code>. Especificar el origen asegura que el paquete se instala únicamente desde ese origen.</li>
+<li>Examine el sistema de archivos para comprobar que los archivos se instalan correctamente.</li>
+</ol>
+<h2 id="next-steps" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#next-steps" aria-labelledby="next-steps"></a>Pasos siguientes</h2>
+<p>Una vez haya creado un paquete, que es un archivo <code>.nupkg</code>, puede publicarlo en la galería de su elección como se describe en <code>.nupkg</code>.</p>
+<p>Es posible que también quiera ampliar las funcionalidades del paquete o admitir otros escenarios, como se describe en los temas siguientes:</p>
+<ul>
+<li><a href="https://docs.microsoft.com/es-es/nuget/concepts/package-versioning" data-linktype="relative-path">Control de versiones del paquete</a></li>
+<li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/supporting-multiple-target-frameworks" data-linktype="relative-path">Compatibilidad con varias plataformas de destino</a></li>
+<li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/source-and-config-file-transformations" data-linktype="relative-path">Transformaciones de archivos de origen y configuración</a></li>
+<li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-localized-packages" data-linktype="relative-path">Localización</a></li>
+<li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/prerelease-packages" data-linktype="relative-path">Versiones preliminares</a></li>
+<li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/set-package-type" data-linktype="relative-path">Definición del tipo de paquete</a></li>
+<li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/author-packages-with-com-interop-assemblies" data-linktype="relative-path">Creación de paquetes con ensamblados de interoperabilidad COM</a></li>
+</ul>
+<p>Por último, hay tipos de paquete adicionales que tener en cuenta:</p>
+<ul>
+<li><a href="https://docs.microsoft.com/es-es/nuget/guides/native-packages" data-linktype="relative-path">Paquetes nativos</a></li>
+<li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/symbol-packages-snupkg" data-linktype="relative-path">Paquetes de símbolos</a></li>
+</ul>
+
+							</div>
+							<!-- </content> -->
+
+						</main>
+
+
+
+
+						<!-- recommendations section -->
+							<section id="recommendations-section" data-bi-name="recommendations"><!---->
+			<hr class="hr">
+			<h2 class="title is-3 has-margin-top-large"><!---->Contenido recomendado<!----></h2>
+			
+		<ul id="recommendations-list" aria-live="polite" aria-relevant="additions" aria-label="recommendations list" class="has-margin-bottom-large">
+			<!---->
+					<li class="margin-top-xs ">
+						<article class="card">
+							<div class="card-content">
+								<a class="card-content-title stretched-link" href="https://docs.microsoft.com/es-es/nuget/reference/nuspec" data-bi-name="recommendation-item-0">
+									<h3><!---->Referencia del archivo .nuspec para NuGet<!----></h3>
+								</a>
+								<p class="card-content-description line-clamp-3"><!---->El archivo .nuspec contiene metadatos de paquete que se usan para crear un paquete y proporcionar información a los consumidores del paquete.<!----></p>
+							</div>
+						</article>
+					</li>
+				<!---->
+					<li class="margin-top-xs ">
+						<article class="card">
+							<div class="card-content">
+								<a class="card-content-title stretched-link" href="https://docs.microsoft.com/es-es/nuget/reference/cli-reference/cli-ref-pack" data-bi-name="recommendation-item-1">
+									<h3><!---->NuGet comando pack de la CLI<!----></h3>
+								</a>
+								<p class="card-content-description line-clamp-3"><!---->Referencia del comando nuget.exe pack<!----></p>
+							</div>
+						</article>
+					</li>
+				<!---->
+					<li class="margin-top-xs ">
+						<article class="card">
+							<div class="card-content">
+								<a class="card-content-title stretched-link" href="https://docs.microsoft.com/es-es/nuget/reference/msbuild-targets" data-bi-name="recommendation-item-2">
+									<h3><!---->NuGet empaquetar y restaurar como MSBuild destinos<!----></h3>
+								</a>
+								<p class="card-content-description line-clamp-3"><!---->NuGet Pack y restore pueden funcionar directamente como MSBuild destinos NuGet con 4.0+.<!----></p>
+							</div>
+						</article>
+					</li>
+				<!---->
+					<li class="margin-top-xs ">
+						<article class="card">
+							<div class="card-content">
+								<a class="card-content-title stretched-link" href="https://docs.microsoft.com/es-es/nuget/reference/cli-reference/cli-ref-add" data-bi-name="recommendation-item-3">
+									<h3><!---->NuGet comando add de la CLI<!----></h3>
+								</a>
+								<p class="card-content-description line-clamp-3"><!---->Referencia del comando nuget.exe agregar<!----></p>
+							</div>
+						</article>
+					</li>
+				<!---->
+					<li class="margin-top-xs expandable">
+						<article class="card">
+							<div class="card-content">
+								<a class="card-content-title stretched-link" href="https://docs.microsoft.com/es-es/nuget/reference/cli-reference/cli-ref-list" data-bi-name="recommendation-item-4">
+									<h3><!---->NuGet comando list de la CLI<!----></h3>
+								</a>
+								<p class="card-content-description line-clamp-3"><!---->Referencia del comando nuget.exe list<!----></p>
+							</div>
+						</article>
+					</li>
+				<!---->
+					<li class="margin-top-xs expandable">
+						<article class="card">
+							<div class="card-content">
+								<a class="card-content-title stretched-link" href="https://docs.microsoft.com/es-es/nuget/reference/cli-reference/cli-ref-environment-variables" data-bi-name="recommendation-item-5">
+									<h3><!---->NuGet variables de entorno de la CLI<!----></h3>
+								</a>
+								<p class="card-content-description line-clamp-3"><!---->Referencia de las variables nuget.exe entorno<!----></p>
+							</div>
+						</article>
+					</li>
+				<!---->
+					<li class="margin-top-xs expandable">
+						<article class="card">
+							<div class="card-content">
+								<a class="card-content-title stretched-link" href="https://docs.microsoft.com/es-es/nuget/reference/errors-and-warnings/nu5128" data-bi-name="recommendation-item-6">
+									<h3><!---->NuGet advertencia NU5128<!----></h3>
+								</a>
+								<p class="card-content-description line-clamp-3"><!---->Código de advertencia de NU5128<!----></p>
+							</div>
+						</article>
+					</li>
+				<!---->
+					<li class="margin-top-xs expandable">
+						<article class="card">
+							<div class="card-content">
+								<a class="card-content-title stretched-link" href="https://docs.microsoft.com/es-es/nuget/create-packages/supporting-multiple-target-frameworks" data-bi-name="recommendation-item-7">
+									<h3><!---->Compatibilidad con múltiples versiones de paquetes NuGet<!----></h3>
+								</a>
+								<p class="card-content-description line-clamp-3"><!---->Descripción de los distintos métodos para fijar como destino varias versiones de .NET Framework desde un único paquete de NuGet.<!----></p>
+							</div>
+						</article>
+					</li>
+				<!---->
+		</ul>
+		
+				<div class="buttons buttons-centered has-background-linethrough">
+					
+		<button aria-expanded="false" data-show-more="" data-bi-name="show-more-btn" class="button button-sm margin-bottom-none show-more-button" aria-controls="recommendations-list">
+			<span class="show-more-text"><!---->Mostrar más<!----></span>
+			<span class="icon" aria-hidden="true">
+				<span class="expanded-indicator docon docon-chevron-down-light"></span>
+			</span>
+		</button>
+	
+				</div>
+		  
+	
+		<!----></section>
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						<div class="border-top is-visible-interactive has-default-focus has-margin-top-large ">
+
+
+
+	<footer id="footer-interactive" data-bi-name="footer" class="footer-layout">
+	<div class="display-flex is-full-height has-padding-right-extra-large-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link button button-clear flex-shrink-0" href="https://docs.microsoft.com/es-es/locale?target=https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package" data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text">Español (España)</span></a>
+		<div class="margin-inline-xs flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu-interactive" aria-expanded="false" title="Tema" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Tema</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu-interactive" role="menu">
+		<ul class="theme-selector has-padding-small">
+			<li class="theme display-block">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start is-selected" data-theme-to="light" aria-pressed="true">
+					<span class="theme-light margin-right-xxs">
+						<span class="theme-selector-icon css-variable-support border display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Claro					</span>
+				</button>
+			</li>
+			<li class="theme display-block">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start" data-theme-to="dark" aria-pressed="false">
+					<span class="theme-dark margin-right-xxs">
+						<span class="border theme-selector-icon css-variable-support display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Oscuro					</span>
+				</button>
+			</li>
+			<li class="theme display-block">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span class="border theme-selector-icon css-variable-support display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Contraste alto					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden=""></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/es-es/previous-versions/" data-bi-name="archivelink">Documentación de versiones anteriores</a></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/es-es/teamblog" data-bi-name="bloglink">Blog</a></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/es-es/contribute" data-bi-name="contributorGuide">Contribuir</a></li>
+					<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacidad &amp; cookies</a></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/es-es/legal/termsofuse" data-bi-name="termsofuse">Términos de uso</a></li>
+				<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Marcas comerciales</a></li>
+		<li>© Microsoft 2022</li>
+	</ul>
+</footer>
+						</div>
+					</div>
+
+						<div class="font-size-sm right-container column is-4-desktop display-none display-block-desktop" data-bi-name="pageactions" role="complementary" aria-label="Acciones de página">
+
+							<div id="affixed-right-container" class="doc-outline is-vertically-scrollable" style="width: 335.8px; top: 24px; bottom: 24px; position: fixed;">
+								<nav id="side-doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="Esquema del artículo">
+									<h3>En este artículo</h3>
+								<ol><li class=""><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#decide-which-assemblies-to-package">Decisión sobre qué ensamblados empaquetar</a></li><li class="selected"><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#the-role-and-structure-of-the-nuspec-file">Rol y estructura del archivo .nuspec</a></li><li class=""><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#create-the-nuspec-file">Creación del archivo .nuspec</a></li><li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#choose-a-unique-package-identifier-and-setting-the-version-number">Elección de un identificador de paquete único y establecimiento del número de versión</a></li><li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#add-a-readme-and-other-files">Adición de un archivo Léame y otros archivos</a></li><li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#include-msbuild-props-and-targets-in-a-package">Inclusión de propiedades y destinos de MSBuild en un paquete</a></li><li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#run-nuget-pack-to-generate-the-nupkg-file">Ejecución del paquete nuget para generar el archivo .nupkg</a></li><li><a href="https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package#next-steps">Pasos siguientes</a></li></ol></nav>
+							</div>
+						</div>
+
+				</div>
+				<!--end of div.columns -->
+
+			</section>
+			<!--end of .primary-holder -->
+
+			<!-- interactive container -->
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+			<!-- end of interactive container -->
+		</div>
+
+	</div>
+	<!--end of .mainContainer -->
+
+	<section class="border-top has-default-focus is-hidden-interactive margin-top-sm ">
+
+
+
+	<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+	<div class="display-flex is-full-height has-padding-right-extra-large-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link button button-clear flex-shrink-0" href="https://docs.microsoft.com/es-es/locale?target=https://docs.microsoft.com/es-es/nuget/create-packages/creating-a-package" data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text">Español (España)</span></a>
+		<div class="margin-inline-xs flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu" aria-expanded="false" title="Tema" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Tema</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector has-padding-small">
+			<li class="theme display-block">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start is-selected" data-theme-to="light" aria-pressed="true">
+					<span class="theme-light margin-right-xxs">
+						<span class="theme-selector-icon css-variable-support border display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Claro					</span>
+				</button>
+			</li>
+			<li class="theme display-block">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start" data-theme-to="dark" aria-pressed="false">
+					<span class="theme-dark margin-right-xxs">
+						<span class="border theme-selector-icon css-variable-support display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Oscuro					</span>
+				</button>
+			</li>
+			<li class="theme display-block">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span class="border theme-selector-icon css-variable-support display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Contraste alto					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden=""></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/es-es/previous-versions/" data-bi-name="archivelink">Documentación de versiones anteriores</a></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/es-es/teamblog" data-bi-name="bloglink">Blog</a></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/es-es/contribute" data-bi-name="contributorGuide">Contribuir</a></li>
+					<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacidad &amp; cookies</a></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/es-es/legal/termsofuse" data-bi-name="termsofuse">Términos de uso</a></li>
+				<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Marcas comerciales</a></li>
+		<li>© Microsoft 2022</li>
+	</ul>
+</footer>
+	</section>
+
+	<div id="action-panel" role="region" aria-label="Panel de acciones" class="action-panel has-default-focus" tabindex="-1"></div>
+
+
+</body></html>

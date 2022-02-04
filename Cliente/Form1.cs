@@ -14,11 +14,11 @@ namespace Cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MailOperation.MailConfig mailConfig = new MailOperation.MailConfig();
-            MailOperation.MailResponse mailResponse;
+            UMB.MailOperation.MailConfig mailConfig = new UMB.MailOperation.MailConfig();
+            UMB.MailOperation.MailResponse mailResponse;
             if (LoadConfiguration(mailConfig))
             {
-                MailOperation.Mail mail = new MailOperation.Mail(mailConfig);
+                UMB.MailOperation.Mail mail = new UMB.MailOperation.Mail(mailConfig);
 
                 mailResponse = mail.SendMail("es una prueba", "prueba");
                 if (mailResponse.success != true)
@@ -32,7 +32,7 @@ namespace Cliente
             }
         }
 
-        private bool LoadConfiguration(MailOperation.MailConfig mailConfig)
+        private bool LoadConfiguration(UMB.MailOperation.MailConfig mailConfig)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace Cliente
                 cadena = File.ReadAllText(path);
                 return cadena;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return string.Empty;
             }

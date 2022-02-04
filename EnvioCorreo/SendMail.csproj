@@ -7,9 +7,9 @@
     <ProjectGuid>{7F4DE0A0-91AA-4CB2-99BF-C4370C2D910B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MailOperation</RootNamespace>
-    <AssemblyName>SendMailUmb</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>UMB.MailOperation</RootNamespace>
+    <AssemblyName>UMB.SendMail</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -31,9 +31,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\SendMailUmb.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\UMB.SendMail.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
     <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>sendmail.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -48,6 +51,12 @@
     <Compile Include="Mail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MailResponse.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sendmail.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sendmail.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
