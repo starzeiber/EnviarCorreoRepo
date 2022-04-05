@@ -43,10 +43,14 @@ namespace MailOperation
         /// indica que llevará un adjunto
         /// </summary>
         public bool withAttachment { get; set; }
+        ///// <summary>
+        ///// Ruta del archivo adjunto
+        ///// </summary>
+        //public string pathAttachment { get; set; }
         /// <summary>
-        /// Ruta del archivo adjunto
+        /// Listado de las rutas de los archivos a adjuntar
         /// </summary>
-        public string pathAttachment { get; set; }
+        public List<string> listPathAttachments { set; get; }
 
         public MailConfig()
         {
@@ -59,7 +63,7 @@ namespace MailOperation
             listRecipient = new List<string>();
             sender = "";
             withAttachment = false;
-            pathAttachment = "";
+            listPathAttachments = new List<string>();
         }
 
     }

@@ -48,6 +48,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UMB.SendMail, Version=3.0.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UMB.SendMail.3.1.0\lib\net48\UMB.SendMail.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">
@@ -87,6 +90,8 @@
     <Content Include="Plantillas\images\7331519201751184.png" />
     <Content Include="Plantillas\images\blank.gif" />
     <Content Include="Plantillas\index.html" />
+    <Content Include="sendmail.ico" />
+    <Content Include="sendmail.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

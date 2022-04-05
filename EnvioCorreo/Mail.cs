@@ -51,27 +51,48 @@ namespace MailOperation
 
                 if (mailConfig.withAttachment)
                 {
+                    foreach (string eachAttachment in mailConfig.listPathAttachments)
+                    {
+                        if (File.Exists(eachAttachment))
+                        {
+                            // Create  the file attachment for this email message.
+                            Attachment data = new Attachment(eachAttachment, MediaTypeNames.Application.Octet);
+                            // Add time stamp information for the file.
+                            ContentDisposition disposition = data.ContentDisposition;
+                            disposition.CreationDate = System.IO.File.GetCreationTime(eachAttachment);
+                            disposition.ModificationDate = System.IO.File.GetLastWriteTime(eachAttachment);
+                            disposition.ReadDate = System.IO.File.GetLastAccessTime(eachAttachment);
+                            // Add the file attachment to this email message.
+                            mailMessage.Attachments.Add(data);
+                        }
+                        else
+                        {
+                            mailResponse.errorDescription = "No existe el archivo adjunto";
+                            mailResponse.success = false;
+                            return mailResponse;
+                        }
+                    }
                     //LinkedResource logo = new LinkedResource(configuracionCorreo.pathLogo);
                     //logo.ContentId = "Logo";
                     //htmlView.LinkedResources.Add(logo);
-                    if (File.Exists(mailConfig.pathAttachment))
-                    {
-                        // Create  the file attachment for this email message.
-                        Attachment data = new Attachment(mailConfig.pathAttachment, MediaTypeNames.Application.Octet);
-                        // Add time stamp information for the file.
-                        ContentDisposition disposition = data.ContentDisposition;
-                        disposition.CreationDate = System.IO.File.GetCreationTime(mailConfig.pathAttachment);
-                        disposition.ModificationDate = System.IO.File.GetLastWriteTime(mailConfig.pathAttachment);
-                        disposition.ReadDate = System.IO.File.GetLastAccessTime(mailConfig.pathAttachment);
-                        // Add the file attachment to this email message.
-                        mailMessage.Attachments.Add(data);
-                    }
-                    else
-                    {
-                        mailResponse.errorDescription = "No existe el archivo adjunto";
-                        mailResponse.success = false;
-                        return mailResponse;
-                    }
+                    //if (File.Exists(mailConfig.pathAttachment))
+                    //{
+                    //    // Create  the file attachment for this email message.
+                    //    Attachment data = new Attachment(mailConfig.pathAttachment, MediaTypeNames.Application.Octet);
+                    //    // Add time stamp information for the file.
+                    //    ContentDisposition disposition = data.ContentDisposition;
+                    //    disposition.CreationDate = System.IO.File.GetCreationTime(mailConfig.pathAttachment);
+                    //    disposition.ModificationDate = System.IO.File.GetLastWriteTime(mailConfig.pathAttachment);
+                    //    disposition.ReadDate = System.IO.File.GetLastAccessTime(mailConfig.pathAttachment);
+                    //    // Add the file attachment to this email message.
+                    //    mailMessage.Attachments.Add(data);
+                    //}
+                    //else
+                    //{
+                    //    mailResponse.errorDescription = "No existe el archivo adjunto";
+                    //    mailResponse.success = false;
+                    //    return mailResponse;
+                    //}
                 }
 
                 if (mailConfig.listRecipient.Count > 1)

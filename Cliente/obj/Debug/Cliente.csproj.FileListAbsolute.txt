@@ -37,3 +37,19 @@ C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.cspro
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.exe
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.pdb
 C:\Users\URIEL\Documents\GitHub\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.csproj.AssemblyReference.cache
+<<<<<<< Updated upstream
+=======
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\bin\Debug\Cliente.exe.config
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\bin\Debug\Cliente.exe
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\bin\Debug\Cliente.pdb
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\bin\Debug\UMB.SendMail.dll
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.csproj.AssemblyReference.cache
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.csproj.SuggestedBindingRedirects.cache
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.Form1.resources
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.Properties.Resources.resources
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.csproj.GenerateResource.cache
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.csproj.CoreCompileInputs.cache
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.csproj.CopyComplete
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.exe
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\Cliente\obj\Debug\Cliente.pdb
+>>>>>>> Stashed changes
