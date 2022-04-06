@@ -1,0 +1,11 @@
+﻿//Siglas    Autor       Fecha       Versión     Descripción
+//@         UMB         24/01/2019  1.0.0.0     Se crea el componente
+//@         UMB         02/10/2021  2.0.0.0     Se actualiza todo el proyecto y se refactoriza
+//@         UMB         02/10/2021  2.1.0.0     Cambio de nombre y subida a nuget
+//@         UMB         06/12/2021  2.2.0.0     Cambio de framework a 4.5
+//@         UMB         06/12/2021  2.2.1.0     Se agregan grupos de dependencia en nuget
+//@         UMB         06/12/2021  2.2.2.0     Cambio de framework a 4.5
+//@         UMB         06/12/2021  2.3.0.0     Cambio de framework a 4.5 en nuget
+//@         UMB         03/02/2021  3.0.0.0     Creación de un nuevo paquete nuget
+//@         UMB         03/02/2021  3.0.2.0     Setting nuget
+//@         UMB         05/04/2021  3.1.2.0     Se agrega un listado de archivos a adjuntar en lugar de solo 1

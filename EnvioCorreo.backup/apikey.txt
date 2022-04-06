@@ -1,0 +1,12 @@
+<<<<<<< Updated upstream
+oy2ohhdsn4sd2htopfzqtokczvvge26ufpjmalu3ucfzky
+cmd:
+nuget pack
+
+nuget push SendMailUmb.2.3.0.nupkg oy2ohhdsn4sd2htopfzqtokczvvge26ufpjmalu3ucfzky -Source https://api.nuget.org/v3/index.json
+=======
+oy2dcqn3mbf5qqhevttqbg56nxsf3gvuhjfar253ltlhry
+
+
+nuget push UMB.SendMail.3.0.1.1.nupkg oy2dcqn3mbf5qqhevttqbg56nxsf3gvuhjfar253ltlhry -Source https://api.nuget.org/v3/index.json
+>>>>>>> Stashed changes

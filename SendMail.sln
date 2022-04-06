@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendMail", "EnvioCorreo\SendMail.csproj", "{7F4DE0A0-91AA-4CB2-99BF-C4370C2D910B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendMail", "EnvioCorreo\SendMail.csproj", "{7F4DE0A0-91AA-4CB2-99BF-C4370C2D910B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cliente", "Cliente\Cliente.csproj", "{82604777-177C-4875-BDEB-311D8742D028}"
 EndProject

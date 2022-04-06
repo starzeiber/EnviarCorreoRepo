@@ -1,0 +1,10 @@
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\obj\Release\netstandard2.0\SendMail.csproj.AssemblyReference.cache
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\obj\Release\netstandard2.0\SendMail.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\obj\Release\netstandard2.0\SendMail.csproj.CoreCompileInputs.cache
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Release\netstandard2.0\SendMailUmb.xml
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Release\netstandard2.0\sendmail.png
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Release\netstandard2.0\UMB.SendMail.deps.json
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Release\netstandard2.0\UMB.SendMail.dll
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Release\netstandard2.0\UMB.SendMail.pdb
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\obj\Release\netstandard2.0\UMB.SendMail.dll
+C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\obj\Release\netstandard2.0\UMB.SendMail.pdb
