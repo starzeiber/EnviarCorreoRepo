@@ -43,8 +43,8 @@ using System.Runtime.InteropServices;
 //@         UMB         03/02/2021  3.0.0.0     Creación de un nuevo paquete nuget
 //@         UMB         03/02/2021  3.0.2.0     Setting nuget
 //@         UMB         05/04/2021  3.1.0.0     Se agrega un listado de archivos a adjuntar en lugar de solo 1, actualización a net6.0
+//@         UMB         18/07/2022  3.2.0.0     Se agrega una validación más extensa de parametros en el config del correo
 
-
-[assembly: AssemblyVersion("3.1.0.0")]
-[assembly: AssemblyFileVersion("3.1.0.0")]
+[assembly: AssemblyVersion("3.2.0.0")]
+[assembly: AssemblyFileVersion("3.2.0.0")]
 

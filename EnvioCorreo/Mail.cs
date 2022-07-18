@@ -22,10 +22,6 @@ namespace MailOperation
         public Mail(MailConfig mailConfig)
         {
             this.mailConfig = mailConfig;
-            if (!CheckParameters())
-            {
-                throw new Exception("Uno o varios valores incorrectos en ConfiguracionCorreo");
-            }
         }
 
         /// <summary>
@@ -36,8 +32,17 @@ namespace MailOperation
         /// <returns></returns>
         public MailResponse SendMail(string title, string html)
         {
+            if (!CheckParameters(title, html))
+            {
+                return new MailResponse()
+                {
+                    success = false,
+                    errorDescription = "Uno o varios valores incorrectos en la configuracion de correo"
+                };
+            }
+
             MailResponse mailResponse = new MailResponse();
-            
+
             MailMessage mailMessage = new MailMessage(mailConfig.sender, mailConfig.listRecipient.First(), title, html);
 
             if (mailConfig.withHighPriority)
@@ -128,9 +133,16 @@ namespace MailOperation
             }
         }
 
-        private bool CheckParameters()
+        private bool CheckParameters(string title, string html)
         {
-            if (mailConfig.user == "" || mailConfig.smtp == "" || mailConfig.pass == "" || mailConfig.port == 0 || mailConfig.listRecipient.Count == 0 || mailConfig.sender == "")
+            if (string.IsNullOrEmpty(mailConfig.user) ||
+                string.IsNullOrEmpty(mailConfig.smtp) ||
+                string.IsNullOrEmpty(mailConfig.pass) ||
+                mailConfig.port == 0 ||
+                mailConfig.listRecipient.Count == 0 ||
+                string.IsNullOrEmpty(mailConfig.sender) ||
+                string.IsNullOrEmpty(html) ||
+                string.IsNullOrEmpty(title))
             {
                 return false;
             }
