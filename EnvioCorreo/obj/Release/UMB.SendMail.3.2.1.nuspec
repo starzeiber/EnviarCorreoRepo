@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>UMB.SendMail</id>
+    <version>3.2.1</version>
+    <authors>UMB.SendMail</authors>
+    <icon>sendmail.png</icon>
+    <description>Componente que envia un correo electronico con un cuerpo en html</description>
+    <releaseNotes>Se agrega un listado de archivos a adjuntar en lugar de solo 1</releaseNotes>
+    <copyright>UMB</copyright>
+    <tags>UMB SendMail</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.8">
+        <dependency id="System.Data.DataSetExtensions" version="4.5.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="System.Data.DataSetExtensions" version="4.5.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Data.DataSetExtensions" version="4.5.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Release\net48\UMB.SendMail.dll" target="lib\net48\UMB.SendMail.dll" />
+    <file src="C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Release\net48\SendMailUmb.xml" target="lib\net48\SendMailUmb.xml" />
+    <file src="C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Release\net6.0\UMB.SendMail.dll" target="lib\net6.0\UMB.SendMail.dll" />
+    <file src="C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Release\net6.0\SendMailUmb.xml" target="lib\net6.0\SendMailUmb.xml" />
+    <file src="C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Release\netstandard2.0\UMB.SendMail.dll" target="lib\netstandard2.0\UMB.SendMail.dll" />
+    <file src="C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\bin\Release\netstandard2.0\SendMailUmb.xml" target="lib\netstandard2.0\SendMailUmb.xml" />
+    <file src="C:\Users\Desarrollo48\Documents\Github\EnviarCorreoRepo\EnvioCorreo\sendmail.png" target="\sendmail.png" />
+  </files>
+</package>

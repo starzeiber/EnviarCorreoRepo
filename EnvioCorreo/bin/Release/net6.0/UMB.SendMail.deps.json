@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "UMB.SendMail/3.1.2": {
+      "UMB.SendMail/3.3.0": {
         "dependencies": {
           "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers": "0.3.310801",
           "System.Data.DataSetExtensions": "4.5.0"
@@ -20,7 +20,7 @@
     }
   },
   "libraries": {
-    "UMB.SendMail/3.1.2": {
+    "UMB.SendMail/3.3.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

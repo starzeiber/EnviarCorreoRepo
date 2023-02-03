@@ -4,6 +4,19 @@
         <name>UMB.SendMail</name>
     </assembly>
     <members>
+        <member name="T:MailOperation.IMail">
+            <summary>
+            Contiene las funciones para poder enviar un correo
+            </summary>
+        </member>
+        <member name="M:MailOperation.IMail.SendMail(System.String,System.String)">
+            <summary>
+            Envia un correo por un cliente smtp
+            </summary>
+            <param name="title">titulo del correo</param>
+            <param name="html">html que será utilizado en el cuerpo del correo</param>
+            <returns>instancia de MailResponse</returns>
+        </member>
         <member name="T:MailOperation.Mail">
             <summary>
             Contiene las funciones para poder enviar un correo
@@ -16,6 +29,14 @@
             <param name="mailConfig">Configuración del correo</param>
         </member>
         <member name="M:MailOperation.Mail.SendMail(System.String,System.String)">
+            <summary>
+            Envia un correo por un cliente smtp
+            </summary>
+            <param name="title">titulo del correo</param>
+            <param name="html">html que será utilizado en el cuerpo del correo</param>
+            <returns></returns>
+        </member>
+        <member name="M:MailOperation.Mail.SendMailAsync(System.String,System.String)">
             <summary>
             Envia un correo por un cliente smtp
             </summary>
@@ -58,7 +79,7 @@
             Variable que almacena la dirección de correo del remitente
             </summary>
         </member>
-        <member name="P:MailOperation.MailConfig.listRecipient">
+        <member name="P:MailOperation.MailConfig.listReceptors">
             <summary>
             Variable que almacena el destinatario de correo electrónico
             </summary>
@@ -76,6 +97,11 @@
         <member name="P:MailOperation.MailConfig.listPathAttachments">
             <summary>
             Listado de las rutas de los archivos a adjuntar
+            </summary>
+        </member>
+        <member name="M:MailOperation.MailConfig.#ctor">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:MailOperation.MailResponse">

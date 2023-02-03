@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "UMB.SendMail/3.1.2": {
+      "UMB.SendMail/3.3.0": {
         "dependencies": {
           "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers": "0.3.310801",
           "NETStandard.Library": "2.0.3",
@@ -35,7 +35,7 @@
     }
   },
   "libraries": {
-    "UMB.SendMail/3.1.2": {
+    "UMB.SendMail/3.3.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

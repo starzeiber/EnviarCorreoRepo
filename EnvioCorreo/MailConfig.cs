@@ -34,7 +34,7 @@ namespace MailOperation
         /// <summary>
         /// Variable que almacena el destinatario de correo electrónico
         /// </summary>
-        public List<string> listRecipient { set; get; }
+        public List<string> listReceptors { set; get; }
         /// <summary>
         /// Con prioridad alta
         /// </summary>
@@ -52,6 +52,9 @@ namespace MailOperation
         /// </summary>
         public List<string> listPathAttachments { set; get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public MailConfig()
         {
             user = "";
@@ -60,7 +63,7 @@ namespace MailOperation
             withCertificateSSL = false;
             withHighPriority = false;
             port = 0;
-            listRecipient = new List<string>();
+            listReceptors = new List<string>();
             sender = "";
             withAttachment = false;
             listPathAttachments = new List<string>();
